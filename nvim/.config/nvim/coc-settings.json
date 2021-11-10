@@ -11,6 +11,7 @@
     ],
     "python.linting.enabled": true,
     "python.linting.mypyEnabled": true,
+    "python.formatting.provider": "black",
     "snippets.ultisnips.directories": [
         "UltiSnips",
         "~/.config/nvim/utils/snips"
