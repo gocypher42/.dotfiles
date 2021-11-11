@@ -23,5 +23,5 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 map <Leader>b :NERDTreeToggle<CR>
-nnoremap <leader>f  <Plug>(coc-format-selected)
+nnoremap <leader>f :call CocAction('format')<CR>
 
