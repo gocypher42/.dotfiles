@@ -13,7 +13,7 @@
     "python.linting.enabled": true,
     "python.linting.mypyEnabled": true,
     "python.formatting.provider": "black",
-    "python.formatting.blackArgs": ["--line-length","79"],
+    "python.formatting.blackArgs": ["--line-length","80"],
     "snippets.ultisnips.directories": [
         "UltiSnips",
         "~/.config/nvim/utils/snips"
