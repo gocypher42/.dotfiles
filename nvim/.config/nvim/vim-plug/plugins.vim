@@ -9,6 +9,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Gruvbox theme
     Plug 'morhetz/gruvbox'    
     " COC
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
