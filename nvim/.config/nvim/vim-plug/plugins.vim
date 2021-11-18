@@ -10,5 +10,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'morhetz/gruvbox'    
     " COC
     Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+    " Vimtex
+    Plug 'lervag/vimtex'
 
 call plug#end()
