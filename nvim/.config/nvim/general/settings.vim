@@ -1,6 +1,15 @@
 " set leader key
 let g:mapleader = "\<Space>"
 let g:airline_powerline_fonts = 1
+let g:coc_global_extensions = [
+            \'coc-pyright', 
+            \'coc-json', 
+            \'coc-tsserver', 
+            \'coc-snippets', 
+            \'coc-html',
+            \'coc-css',
+            \'coc-git'
+            \]
 
 syntax enable                           " Enables syntax highlighing
 set hidden                              " Required to keep multiple buffers open multiple buffers
@@ -12,6 +21,7 @@ set ruler              		            " Show the cursor position all the time
 set cmdheight=1                         " More space for displaying messages
 set iskeyword+=-                      	" treat dash separated words as a word text object"
 " set mouse=a                             " Enable your mouse
+set signcolumn=yes
 set splitbelow                          " Horizontal splits will automatically be below
 set splitright                          " Vertical splits will automatically be to the right
 set t_Co=256                            " Support 256 colors
