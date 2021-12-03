@@ -1,14 +1,15 @@
 " set leader key
 let g:mapleader = "\<Space>"
+let g:airline_powerline_fonts = 1
 
 syntax enable                           " Enables syntax highlighing
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line
 set encoding=utf-8                      " The encoding displayed
-" set pumheight=10                        " Makes popup menu smaller
+set pumheight=10                        " Makes popup menu smaller
 set fileencoding=utf-8                  " The encoding written to file
-set ruler              			            " Show the cursor position all the time
-set cmdheight=2                         " More space for displaying messages
+set ruler              		            " Show the cursor position all the time
+set cmdheight=1                         " More space for displaying messages
 set iskeyword+=-                      	" treat dash separated words as a word text object"
 " set mouse=a                             " Enable your mouse
 set splitbelow                          " Horizontal splits will automatically be below
@@ -26,7 +27,7 @@ set number                              " Line numbers
 set cursorline                          " Enable highlighting of the current line
 " set background=dark                     " tell vim what the background color looks like
 set showtabline=4                       " Always show tabs
-" set noshowmode                          " We don't need to see things like -- INSERT -- anymore
+set noshowmode                          " We don't need to see things like -- INSERT -- anymore
 set nobackup                            " This is recommended by coc
 set noswapfile
 set nowritebackup                       " This is recommended by coc
