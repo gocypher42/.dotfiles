@@ -16,4 +16,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " AirLine
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    
+    " Onedark Theme
+    Plug 'joshdick/onedark.vim'
+
 call plug#end()
