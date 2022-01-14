@@ -23,5 +23,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 map <Leader>b :NERDTreeToggle<CR>
-nnoremap <leader>f :call CocAction('format')<CR>
 
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+nnoremap <C-p> :GFiles<CR>
+nmap <leader><tab> <C-^>
+nnoremap <leader>f :Files<CR> 

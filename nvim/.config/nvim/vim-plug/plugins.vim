@@ -12,12 +12,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
     " Vimtex
     Plug 'lervag/vimtex'
-
     " AirLine
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    
     " Onedark Theme
     Plug 'joshdick/onedark.vim'
-
+    " FZF
+    Plug 'junegunn/fzf', {'do': {->fzf#install()}}    
+    Plug 'junegunn/fzf.vim'
 call plug#end()
