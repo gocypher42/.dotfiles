@@ -1,4 +1,4 @@
-call plug#begin('~/.config/nvim/autoload/plugged')
+call plug#begin(custom_home_path . '/nvim/autoload/plugged')
 
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
