@@ -1,20 +1,18 @@
 
 if has('unix')
-    source ~/.config/nvim/vim-plug/plugins.vim
-    source ~/.config/nvim/plug-config/coc.vim
-    source ~/.config/nvim/plug-config/fzf.vim
-    source ~/.config/nvim/general/settings.vim
-    source ~/.config/nvim/keys/mappings.vim
+    let g:custome_home_path='~/.config'
 endif
 
 if has('win32')
-    source $localappdata/nvim/vim-plug/plugins.vim
-    source $localappdata/nvim/plug-config/coc.vim
-    source $localappdata/nvim/plug-config/fzf.vim
-    source $localappdata/nvim/general/settings.vim
-    source $localappdata/nvim/keys/mappings.vim
+    let g:custome_home_path=$localappdata
 endif
 
+execute 'source ' . custome_home_path . '/nvim/vim-plug/plugins.vim'
+execute 'source ' . custome_home_path . '/nvim/plug-config/coc.vim'
+execute 'source ' . custome_home_path . '/nvim/plug-config/fzf.vim'
+execute 'source ' . custome_home_path . '/nvim/general/settings.vim'
+execute 'source ' . custome_home_path . '/nvim/keys/mappings.vim'
+    
 colorscheme gruvbox
 
 "hi Normal guibg=None ctermbg=None
