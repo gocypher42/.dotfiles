@@ -1,17 +1,17 @@
 
 if has('unix')
-    let g:custome_home_path='~/.config'
+    let g:custom_home_path='~/.config'
 endif
 
 if has('win32')
-    let g:custome_home_path=$localappdata
+    let g:custom_home_path=$localappdata
 endif
 
-execute 'source ' . custome_home_path . '/nvim/vim-plug/plugins.vim'
-execute 'source ' . custome_home_path . '/nvim/plug-config/coc.vim'
-execute 'source ' . custome_home_path . '/nvim/plug-config/fzf.vim'
-execute 'source ' . custome_home_path . '/nvim/general/settings.vim'
-execute 'source ' . custome_home_path . '/nvim/keys/mappings.vim'
+execute 'source ' . custom_home_path . '/nvim/vim-plug/plugins.vim'
+execute 'source ' . custom_home_path . '/nvim/plug-config/coc.vim'
+execute 'source ' . custom_home_path . '/nvim/plug-config/fzf.vim'
+execute 'source ' . custom_home_path . '/nvim/general/settings.vim'
+execute 'source ' . custom_home_path . '/nvim/keys/mappings.vim'
     
 colorscheme gruvbox
 
