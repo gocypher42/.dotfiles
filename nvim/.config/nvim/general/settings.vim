@@ -1,6 +1,13 @@
 " set leader key
 let g:mapleader = "\<Space>"
-let g:airline_powerline_fonts = 1
+
+if has('unix')
+    let g:airline_powerline_fonts = 1
+endif
+if has('win32')
+    let g:airline_powerline_fonts = 0
+endif
+
 let g:coc_global_extensions = [
             \'coc-pyright', 
             \'coc-json', 
