@@ -5,6 +5,7 @@ endif
 
 if has('win32')
     let g:custom_home_path=$localappdata
+    au VimEnter * AirlineToggle
 endif
 
 execute 'source ' . custom_home_path . '/nvim/vim-plug/plugins.vim'
