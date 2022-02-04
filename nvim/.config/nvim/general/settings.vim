@@ -15,7 +15,8 @@ let g:coc_global_extensions = [
             \'coc-snippets', 
             \'coc-html',
             \'coc-css',
-            \'coc-git'
+            \'coc-git',
+            \'coc-prettier'
             \]
 
 syntax enable                           " Enables syntax highlighing
