@@ -17,5 +17,3 @@ execute 'source ' . custom_home_path . '/nvim/keys/mappings.vim'
 colorscheme gruvbox
 
 hi Normal guibg=None ctermbg=None
-
-:command FormatJson %!python3 -m json.tool
