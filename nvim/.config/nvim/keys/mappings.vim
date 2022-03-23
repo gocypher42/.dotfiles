@@ -22,7 +22,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-map <Leader>b :NERDTreeToggle<CR>
+" map <Leader>b :NERDTreeToggle<CR>
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
 nnoremap <leader>o o<Esc>
