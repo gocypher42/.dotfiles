@@ -22,11 +22,13 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" map <Leader>b :NERDTreeToggle<CR>
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
+" Add empty new lines
 nnoremap <leader>o o<Esc>
 nnoremap <leader>O O<Esc>
-nnoremap <C-p> :GFiles<CR>
-nmap <leader><tab> <C-^>
-nnoremap <leader>f :Files<CR> 
+
+" Telescope Mapping
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>gf <cmd>lua require('telescope.builtin').git_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>

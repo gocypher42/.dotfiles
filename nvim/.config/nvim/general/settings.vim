@@ -1,9 +1,10 @@
-" set leader key
+" Set leader key
 let g:mapleader = "\<Space>"
 
 if has('unix')
     let g:airline_powerline_fonts = 1
 endif
+
 if has('win32')
     let g:airline_powerline_fonts = 0
 endif
@@ -19,7 +20,7 @@ let g:coc_global_extensions = [
             \'coc-prettier'
             \]
 
-syntax enable                           " Enables syntax highlighing
+" syntax enable                           " Enables syntax highlighing
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line
 set encoding=utf-8                      " The encoding displayed
@@ -28,7 +29,6 @@ set fileencoding=utf-8                  " The encoding written to file
 set ruler              		            " Show the cursor position all the time
 set cmdheight=1                         " More space for displaying messages
 set iskeyword+=-                      	" treat dash separated words as a word text object"
-" set mouse=a                             " Enable your mouse
 set signcolumn=yes
 set splitbelow                          " Horizontal splits will automatically be below
 set splitright                          " Vertical splits will automatically be to the right

@@ -1,19 +1,25 @@
+" ===================================================================
+" Olivier Guenette Nvim config files
+" ===================================================================
 
 if has('unix')
-    let g:custom_home_path='~/.config'
+    let g:home_path='~/.config'
 endif
 
 if has('win32')
-    let g:custom_home_path=$localappdata
+    let g:home_path=$localappdata
     au VimEnter * AirlineToggle
 endif
 
-execute 'source ' . custom_home_path . '/nvim/vim-plug/plugins.vim'
-execute 'source ' . custom_home_path . '/nvim/plug-config/coc.vim'
-execute 'source ' . custom_home_path . '/nvim/plug-config/fzf.vim'
-execute 'source ' . custom_home_path . '/nvim/general/settings.vim'
-execute 'source ' . custom_home_path . '/nvim/keys/mappings.vim'
-    
+let g:config_path= home_path . '/nvim'
+
+execute 'source ' . config_path . '/vim-plug/plugins.vim'
+execute 'source ' . config_path . '/general/settings.vim'
+execute 'source ' . config_path . '/keys/mappings.vim'
+execute 'luafile ' . config_path . '/lua/luaconfig.lua'
+
 colorscheme gruvbox
 
 hi Normal guibg=None ctermbg=None
+let g:rustfmt_autosave = 1
+

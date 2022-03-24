@@ -1,15 +1,10 @@
-call plug#begin(custom_home_path . '/nvim/autoload/plugged')
-
+call plug#begin(home_path . '/nvim/autoload/plugged')
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
-    " File Explorer
-    " Plug 'scrooloose/NERDTree'
     " Auto pairs for '(' '[' '{'
     Plug 'jiangmiao/auto-pairs'
     " Gruvbox theme
     Plug 'morhetz/gruvbox'    
-    " COC
-    Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
     " Vimtex
     Plug 'lervag/vimtex'
     " AirLine
@@ -17,7 +12,23 @@ call plug#begin(custom_home_path . '/nvim/autoload/plugged')
     Plug 'vim-airline/vim-airline-themes'
     " Onedark Theme
     Plug 'joshdick/onedark.vim'
-    " FZF
-    Plug 'junegunn/fzf', {'do': {->fzf#install()}}    
-    Plug 'junegunn/fzf.vim'
+    " lspconfig
+    Plug 'neovim/nvim-lspconfig'
+    " lsp autocomplete
+    Plug 'hrsh7th/nvim-cmp' 
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'L3MON4D3/luaSnip'
+    Plug 'saadparwaiz1/cmp_luasnip'
+    " Telescope
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    " Treesitter
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}    
+    " lsp installer
+    Plug 'williamboman/nvim-lsp-installer'
+    " Formatter
+    Plug 'jose-elias-alvarez/null-ls.nvim'    
+    Plug 'rust-lang/rust.vim'
 call plug#end()
