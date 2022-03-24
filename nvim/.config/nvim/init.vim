@@ -18,8 +18,8 @@ execute 'source ' . config_path . '/general/settings.vim'
 execute 'source ' . config_path . '/keys/mappings.vim'
 execute 'luafile ' . config_path . '/lua/luaconfig.lua'
 
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme onedark
 
 hi Normal guibg=None ctermbg=None
-let g:rustfmt_autosave = 1
 
