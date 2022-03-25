@@ -9,18 +9,7 @@ if has('win32')
     let g:airline_powerline_fonts = 0
 endif
 
-let g:coc_global_extensions = [
-            \'coc-pyright', 
-            \'coc-json', 
-            \'coc-tsserver', 
-            \'coc-snippets', 
-            \'coc-html',
-            \'coc-css',
-            \'coc-git',
-            \'coc-prettier'
-            \]
-
-" syntax enable                           " Enables syntax highlighing
+syntax enable                           " Enables syntax highlighing
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line
 set encoding=utf-8                      " The encoding displayed
@@ -65,4 +54,3 @@ set ttyfast
 set scrolloff=8
 set showmatch
 set nohlsearch
-
