@@ -16,7 +16,7 @@ let g:config_path= home_path . '/nvim'
 execute 'source ' . config_path . '/vim-plug/plugins.vim'
 execute 'source ' . config_path . '/general/settings.vim'
 execute 'source ' . config_path . '/keys/mappings.vim'
-execute 'luafile ' . config_path . '/lua/luaconfig.lua'
+execute 'luafile ' . config_path . '/lua/init.lua'
 
 " colorscheme gruvbox
 colorscheme onedark
