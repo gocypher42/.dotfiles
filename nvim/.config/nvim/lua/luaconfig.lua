@@ -1,4 +1,6 @@
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").update_capabilities(
+	vim.lsp.protocol.make_client_capabilities()
+)
 
 -- LSP Native Config
 local lsp_installer = require("nvim-lsp-installer")
@@ -10,13 +12,43 @@ lsp_installer.on_server_ready(function(server)
 			client.resolved_capabilities.document_range_formatting = false
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
-			vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 })
-			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })
-			vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
-			vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
-			vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", { buffer = 0 })
+			vim.keymap.set(
+				"n",
+				"gt",
+				vim.lsp.buf.type_definition,
+				{ buffer = 0 }
+			)
+			vim.keymap.set(
+				"n",
+				"gi",
+				vim.lsp.buf.implementation,
+				{ buffer = 0 }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>dj",
+				vim.diagnostic.goto_next,
+				{ buffer = 0 }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>dk",
+				vim.diagnostic.goto_prev,
+				{ buffer = 0 }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>dl",
+				"<cmd>Telescope diagnostics<cr>",
+				{ buffer = 0 }
+			)
 			vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = 0 })
-			vim.keymap.set("n", "<leader>f", vim.lsp.buf.formatting, { buffer = 0 })
+			vim.keymap.set(
+				"n",
+				"<leader>f",
+				vim.lsp.buf.formatting,
+				{ buffer = 0 }
+			)
 		end,
 	}
 	server:setup(opts)
@@ -41,7 +73,11 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" } -- setting vim options
 -- Setup nvim-cmp.
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+	return col ~= 0
+		and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
+				:sub(col, col)
+				:match("%s")
+			== nil
 end
 
 local luasnip = require("luasnip")
@@ -97,7 +133,7 @@ cmp.setup({
 local configs = require("nvim-treesitter.configs")
 configs.setup({
 	ensure_installed = "maintained", -- Only use parsers that are maintained
-	highlight = { -- enable highlighting
+	highlight = {
 		enable = true,
 	},
 	indent = {
@@ -110,9 +146,11 @@ local formatting = require("null-ls").builtins.formatting
 require("null-ls").setup({
 	debug = true,
 	sources = {
-		formatting.stylua,
-		formatting.black.with({ extra_args = { "-l 80" } }),
-		--	formatting.rustfmt.with({ extra_args = { "--edition 2021" } }),
+		formatting.stylua.with({ extra_args = { "--column-width", "80" } }),
+		formatting.black.with({ extra_args = { "-l", "80" } }),
+		formatting.rustfmt.with({
+			extra_args = { "--config", "max_width=80" },
+		}),
 	},
 	on_attach = function(client) -- Format on save
 		if client.resolved_capabilities.document_formatting then
