@@ -3,7 +3,10 @@ local formatting = require("null-ls").builtins.formatting
 require("null-ls").setup({
 	debug = true,
 	sources = {
-		formatting.tidy.with({ extra_args = { "-xml", "-i" }}),
+		formatting.tidy.with({
+                	filetypes = { "xml" },
+			extra_args = { "-xml", "-i" },
+             	}),
 		formatting.stylua.with({ extra_args = { "--column-width", "80" } }),
 		formatting.black.with({ extra_args = { "-l", "80" } }),
 		formatting.rustfmt.with({
