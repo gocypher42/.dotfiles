@@ -7,10 +7,10 @@ nnoremap <M-l>    :vertical resize +2<CR>
 " Key binds
 " Remaps to exit insert modeinoremap jk <Esc>
 inoremap ii <Esc>
-inoremap jk <Esc>
-inoremap kj <Esc>
-vnoremap jk <Esc>
-vnoremap kj <Esc>
+" inoremap jk <Esc>
+" inoremap kj <Esc>
+" vnoremap jk <Esc>
+" vnoremap kj <Esc>
 
 " Better tabbing
 vnoremap < <gv
