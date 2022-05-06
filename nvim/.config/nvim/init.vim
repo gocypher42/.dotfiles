@@ -8,7 +8,6 @@ endif
 
 if has('win32')
     let g:home_path=$localappdata
-    au VimEnter * AirlineToggle
 endif
 
 let g:config_path= home_path . '/nvim'
