@@ -29,6 +29,7 @@ call plug#begin(home_path . '/nvim/autoload/plugged')
     " lsp installer
     Plug 'williamboman/nvim-lsp-installer'
     " Formatter
-    Plug 'jose-elias-alvarez/null-ls.nvim'    
-    Plug 'rust-lang/rust.vim'
+    Plug 'jose-elias-alvarez/null-ls.nvim' 
+    " Commenter
+    Plug 'numToStr/Comment.nvim'
 call plug#end()
