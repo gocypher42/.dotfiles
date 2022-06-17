@@ -8,8 +8,8 @@ lsp_installer.on_server_ready(function(server)
 	local opts = {
 		capabilities = capabilities,
 		on_attach = function(client)
-			client.server_capabilities.document_formatting = false
-			client.server_capabilities.document_range_formatting = false
+			client.resolved_capabilities.document_formatting = false
+			client.resolved_capabilities.document_range_formatting = false
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
 			vim.keymap.set(

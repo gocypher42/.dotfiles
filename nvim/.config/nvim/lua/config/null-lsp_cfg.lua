@@ -1,9 +1,16 @@
 local formatting = require("null-ls").builtins.formatting
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 -- Formatter config
 require("null-ls").setup({
 	debug = true,
 	sources = {
+		formatting.clang_format.with({
+			filetypes = { "cpp" },
+			-- filetypes = {},
+			extra_args = {
+				"-style={AlignConsecutiveAssignments: AcrossEmptyLinesAndComments, ColumnLimit: 180}",
+			},
+		}),
 		formatting.tidy.with({ extra_args = { "-xml", "-i" } }),
 		formatting.stylua.with({ extra_args = { "--column-width", "80" } }),
 		formatting.black.with({ extra_args = { "-l", "80" } }),
@@ -11,16 +18,14 @@ require("null-ls").setup({
 			extra_args = { "--config", "max_width=80" },
 		}),
 	},
-	on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                group = augroup,
-                buffer = bufnr,
-                callback = function()
-                    vim.lsp.buf.format({ bufnr = bufnr })
-                end,
-            })
-        end
-    end,
+	on_attach = function(client)
+		if client.resolved_capabilities.document_formatting then
+			vim.cmd([[
+            augroup LspFormatting
+                autocmd! * <buffer>
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+            augroup END
+            ]])
+		end
+	end,
 })
