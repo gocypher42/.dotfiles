@@ -6,7 +6,6 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
 end
 
 configs.setup({
-	--ensure_installed = "maintained", -- Only use parsers that are maintained
 	ensure_installed = "all",
 	highlight = {
 		enable = true,

@@ -31,6 +31,7 @@ call plug#begin(home_path . '/nvim/autoload/plugged')
     " Formatter
     Plug 'jose-elias-alvarez/null-ls.nvim' 
     " Commenter
- 	Plug 'OmniSharp/omnisharp-vim'
+	Plug 'OmniSharp/omnisharp-vim'
     Plug 'numToStr/Comment.nvim'
+    Plug 'dstein64/vim-startuptime'
 call plug#end()
