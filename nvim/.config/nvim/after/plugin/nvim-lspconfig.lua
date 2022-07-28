@@ -1,6 +1,3 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-
 --lsp keymaps
 local function make_keybinds()
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
@@ -22,7 +19,6 @@ end
 -- LSP Native Config
 require("nvim-lsp-installer").on_server_ready(function(server)
     local opts = {
-        capabilities = capabilities,
         on_attach = function(client)
             client.resolved_capabilities.document_formatting = false
             client.resolved_capabilities.document_range_formatting = false
@@ -34,19 +30,6 @@ require("nvim-lsp-installer").on_server_ready(function(server)
     }
     server:setup(opts)
 end)
-
--- vim-cmp Config
--- vim.opt.completeopt = { "menu", "menuone", "noselect" } -- setting vim options
-
--- Setup nvim-cmp.
---[[ local has_words_before = function()
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0
-        and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
-                :sub(col, col)
-                :match("%s")
-            == nil
-end ]]
 
 local luasnip = require("luasnip")
 local cmp = require("cmp")

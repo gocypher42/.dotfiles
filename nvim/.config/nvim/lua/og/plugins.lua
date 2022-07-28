@@ -42,4 +42,7 @@ require("packer").startup(function(use)
     })
     -- C# stuff
     use("OmniSharp/omnisharp-vim")
+    -- lazy snippets
+    use("rafamadriz/friendly-snippets")
+    use("honza/vim-snippets")
 end)
