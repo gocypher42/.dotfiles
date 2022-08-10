@@ -52,4 +52,6 @@ require("packer").startup(function(use)
     -- lazy snippets
     use("rafamadriz/friendly-snippets")
     use("honza/vim-snippets")
+    -- Startup timer
+    use("dstein64/vim-startuptime")
 end)
