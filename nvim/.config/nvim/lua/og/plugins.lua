@@ -1,8 +1,16 @@
+-- Install Packer if not installed
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
+    packer_bootstrap = fn.system({
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "https://github.com/wbthomason/packer.nvim",
+        install_path,
+    })
+    vim.cmd([[packadd packer.nvim]])
 end
 
 require("packer").startup(function(use)
@@ -15,8 +23,13 @@ require("packer").startup(function(use)
     -- Auto pairs for '(' '[' '{'
     use("jiangmiao/auto-pairs")
     -- AirLine
-    use("vim-airline/vim-airline")
-    use("vim-airline/vim-airline-themes")
+    -- use("vim-airline/vim-airline")
+    -- use("vim-airline/vim-airline-themes")
+    -- LuaLine
+    use({
+        "nvim-lualine/lualine.nvim",
+        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    })
     -- lsp installer
     use("williamboman/nvim-lsp-installer")
     -- lspconfig

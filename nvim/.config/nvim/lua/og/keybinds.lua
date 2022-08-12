@@ -1,7 +1,7 @@
-local map = require("og.remap").map
+local map = vim.keymap.set
 
 -- Use alt + hjkl to resize windows
-vim.keymap.set("n", "<M-j>", ":resize -2<CR>")
+map("n", "<M-j>", ":resize -2<CR>")
 map("n", "<M-k>", ":resize +2<CR>")
 map("n", "<M-h>", ":vertical resize -2<CR>")
 map("n", "<M-l>", ":vertical resize +2<CR>")
@@ -30,6 +30,3 @@ map("n", "<leader>gf", "<cmd>lua require('telescope.builtin').git_files()<cr>")
 map("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
 map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
-
--- luasnip keybinds
-local ls = require("luasnip")

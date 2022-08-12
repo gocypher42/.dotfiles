@@ -16,6 +16,7 @@ local sources = {
     formatting.rustfmt.with({
         extra_args = { "--config", "max_width=80" },
     }),
+    formatting.prettier,
 }
 
 -- Formatter config
@@ -28,8 +29,6 @@ require("null-ls").setup({
                 group = augroup,
                 buffer = bufnr,
                 callback = function()
-                    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-                    -- vim.lsp.buf.formatting_sync()
                     vim.lsp.buf.format({ bufnr = bufnr })
                 end,
             })
