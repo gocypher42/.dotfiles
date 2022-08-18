@@ -3,7 +3,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local sources = {
     formatting.clang_format.with({
-        filetypes = { "cpp" },
+        filetypes = { "cpp", "med" },
         extra_args = {
             "-style={AlignConsecutiveAssignments: AcrossEmptyLinesAndComments, ColumnLimit: 180}",
         },
