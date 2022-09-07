@@ -8,6 +8,10 @@ local sources = {
             "-style={AlignConsecutiveAssignments: AcrossEmptyLinesAndComments, ColumnLimit: 180}",
         },
     }),
+    formatting.clang_format.with({
+        filetypes = { "java" },
+        extra_args = { "-style=Google" },
+    }),
     formatting.tidy.with({ extra_args = { "-xml", "-i" } }),
     formatting.stylua.with({
         extra_args = { "--column-width", "80", "--indent-type", "Spaces" },
