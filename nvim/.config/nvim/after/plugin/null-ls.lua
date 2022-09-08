@@ -1,15 +1,18 @@
 local formatting = require("null-ls").builtins.formatting
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local sources = {
     formatting.clang_format.with({
-        filetypes = { "cpp", "med" },
+        filetypes = { "med" },
         extra_args = {
-            "-style={AlignConsecutiveAssignments: AcrossEmptyLinesAndComments, ColumnLimit: 180}",
+            "-style={"
+                .. "AlignConsecutiveAssignments: AcrossEmptyLinesAndComments"
+                .. ", "
+                .. "ColumnLimit: 180"
+                .. "}",
         },
     }),
     formatting.clang_format.with({
-        filetypes = { "java" },
+        filetypes = { "java", "cpp" },
         extra_args = { "-style=Google" },
     }),
     formatting.tidy.with({ extra_args = { "-xml", "-i" } }),
@@ -24,6 +27,7 @@ local sources = {
 }
 
 -- Formatter config
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 require("null-ls").setup({
     sources = sources,
     on_attach = function(client, bufnr)
