@@ -13,7 +13,7 @@ local function make_keybinds()
         { buffer = 0 }
     )
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = 0 })
-    vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { buffer = 0 })
+    -- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { buffer = 0 })
 end
 
 -- LSP Native Config

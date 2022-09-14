@@ -27,19 +27,14 @@ local sources = {
 }
 
 -- Formatter config
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 require("null-ls").setup({
     sources = sources,
-    on_attach = function(client, bufnr)
+    on_attach = function(client)
         if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                group = augroup,
-                buffer = bufnr,
-                callback = function()
-                    vim.lsp.buf.format({ bufnr = bufnr })
-                end,
-            })
+            vim.keymap.set("n", "<leader>f", function()
+                vim.lsp.buf.format()
+                print("Document Formated!")
+            end, { buffer = 0 })
         end
     end,
 })
