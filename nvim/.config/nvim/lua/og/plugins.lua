@@ -20,11 +20,15 @@ require("packer").startup(function(use)
 
     -- Better Syntax Support
     use("sheerun/vim-polyglot")
-    -- Auto pairs for '(' '[' '{'
-    use("jiangmiao/auto-pairs")
-    -- AirLine
-    -- use("vim-airline/vim-airline")
-    -- use("vim-airline/vim-airline-themes")
+
+    -- nvim-autopairs
+    use({
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup({})
+        end,
+    })
+
     -- LuaLine
     use({
         "nvim-lualine/lualine.nvim",
