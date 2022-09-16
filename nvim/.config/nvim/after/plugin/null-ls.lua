@@ -12,6 +12,10 @@ local sources = {
         },
     }),
     formatting.clang_format.with({
+        filetypes = {  "cpp" },
+        extra_args = { "-style=Microsoft" },
+    }),
+    formatting.clang_format.with({
         filetypes = { "java", "cpp" },
         extra_args = { "-style=Google" },
     }),
