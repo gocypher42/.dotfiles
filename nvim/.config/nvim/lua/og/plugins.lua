@@ -76,4 +76,11 @@ require("packer").startup(function(use)
     use("honza/vim-snippets")
     -- Startuo Timer
     use("dstein64/vim-startuptime")
+    -- wich-key
+    use({
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup({})
+        end,
+    })
 end)

@@ -12,7 +12,7 @@ local sources = {
         },
     }),
     formatting.clang_format.with({
-        filetypes = {  "cpp" },
+        filetypes = { "cpp" },
         extra_args = { "-style=Microsoft" },
     }),
     formatting.clang_format.with({
