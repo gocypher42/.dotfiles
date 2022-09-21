@@ -45,8 +45,8 @@ require("packer").startup(function(use)
     use("hrsh7th/cmp-nvim-lua")
     use("hrsh7th/cmp-nvim-lsp")
     use("saadparwaiz1/cmp_luasnip")
-
     use("L3MON4D3/luaSnip")
+
     -- Telescope
     use({
         "nvim-telescope/telescope.nvim",
@@ -60,8 +60,11 @@ require("packer").startup(function(use)
             require("nvim-treesitter.install").update({ with_sync = true })
         end,
     })
+    use("nvim-treesitter/nvim-treesitter-context")
+
     -- Formatter
     use("jose-elias-alvarez/null-ls.nvim")
+
     -- Commenter
     use({
         "numToStr/Comment.nvim",
@@ -69,18 +72,11 @@ require("packer").startup(function(use)
             require("Comment").setup()
         end,
     })
-    -- C# stuff
-    use("OmniSharp/omnisharp-vim")
+
     -- lazy snippets
     use("rafamadriz/friendly-snippets")
     use("honza/vim-snippets")
+
     -- Startuo Timer
     use("dstein64/vim-startuptime")
-    -- wich-key
-    use({
-        "folke/which-key.nvim",
-        config = function()
-            require("which-key").setup({})
-        end,
-    })
 end)

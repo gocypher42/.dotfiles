@@ -30,14 +30,23 @@ local sources = {
     formatting.prettier,
 }
 
+local lsp_formattting = function(bufnr)
+    vim.lsp.buf.format({
+        filter = function(client)
+            return client.name == "null-ls"
+        end,
+        bufnr = bufnr,
+    })
+    print("Document Formated!")
+end
+
 -- Formatter config
 require("null-ls").setup({
     sources = sources,
     on_attach = function(client)
         if client.supports_method("textDocument/formatting") then
             vim.keymap.set("n", "<leader>f", function()
-                vim.lsp.buf.format()
-                print("Document Formated!")
+                lsp_formattting(0)
             end, { buffer = 0 })
         end
     end,

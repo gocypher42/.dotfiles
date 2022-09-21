@@ -20,10 +20,6 @@ end
 require("nvim-lsp-installer").on_server_ready(function(server)
     local opts = {
         on_attach = function(client)
-            -- client.resolved_capabilities.document_formatting = false
-            -- client.resolved_capabilities.document_range_formatting = false
-            client.server_capabilities.document_formatting = false
-            client.server_capabilities.documentFormattingProvider = false
             make_keybinds()
         end,
         settings = {
