@@ -79,4 +79,7 @@ require("packer").startup(function(use)
 
     -- Startuo Timer
     use("dstein64/vim-startuptime")
+
+    -- Git gutter
+    use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
 end)
