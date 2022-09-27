@@ -19,7 +19,13 @@ local sources = {
         filetypes = { "java", "cpp" },
         extra_args = { "-style=Google" },
     }),
-    formatting.tidy.with({ extra_args = { "-xml", "-i" } }),
+    formatting.tidy.with({
+        filetypes = { "html" },
+    }),
+    formatting.tidy.with({
+        filetypes = { "xml" },
+        extra_args = { "-xml", "-i" },
+    }),
     formatting.stylua.with({
         extra_args = { "--column-width", "80", "--indent-type", "Spaces" },
     }),
