@@ -81,5 +81,8 @@ require("packer").startup(function(use)
     use("dstein64/vim-startuptime")
 
     -- Git gutter
+    use("airblade/vim-gitgutter")
+
+    -- Neogit (A kind of gui in neovim for git)
     use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
 end)
