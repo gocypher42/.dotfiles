@@ -35,3 +35,4 @@ map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
 map("n","<C-d>", "<C-d>zz")
 map("n","<C-u>", "<C-u>zz")
 
+map("n","<leader>ng", "<cmd>Neogit<cr>")
