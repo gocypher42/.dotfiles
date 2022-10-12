@@ -85,4 +85,11 @@ require("packer").startup(function(use)
 
     -- Neogit (A kind of gui in neovim for git)
     use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
+
+    use({
+        "lewis6991/impatient.nvim",
+        config = function()
+            require("impatient")
+        end,
+    })
 end)
