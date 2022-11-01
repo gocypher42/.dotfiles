@@ -92,4 +92,6 @@ require("packer").startup(function(use)
             require("impatient")
         end,
     })
+
+    use("mfussenegger/nvim-jdtls")
 end)
