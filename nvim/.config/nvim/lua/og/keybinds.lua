@@ -32,7 +32,8 @@ map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
 map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
 
 -- Move half page but keep curso center
-map("n","<C-d>", "<C-d>zz")
-map("n","<C-u>", "<C-u>zz")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
 
-map("n","<leader>ng", "<cmd>Neogit<cr>")
+map("n", "<leader>ng", "<cmd>Neogit<cr>")
+map("n", "<leader>x", "<cmd>Ex")
