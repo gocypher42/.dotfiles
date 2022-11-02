@@ -2,25 +2,12 @@ local formatting = require("null-ls").builtins.formatting
 
 local sources = {
     formatting.clang_format.with({
-        filetypes = { "med" },
-        extra_args = {
-            "-style={"
-                .. "AlignConsecutiveAssignments: AcrossEmptyLinesAndComments"
-                .. ", "
-                .. "ColumnLimit: 180"
-                .. "}",
-        },
-    }),
-    formatting.clang_format.with({
         filetypes = { "cpp" },
         extra_args = { "-style=Microsoft" },
     }),
     formatting.clang_format.with({
-        filetypes = { "java", "cpp" },
+        filetypes = { "java" },
         extra_args = { "-style=Google" },
-    }),
-    formatting.tidy.with({
-        filetypes = { "html" },
     }),
     formatting.tidy.with({
         filetypes = { "xml" },
