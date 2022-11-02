@@ -51,16 +51,14 @@
         },
         {
           "background": "#2e9599",
-          "background_templates": [
-            "{{ if gt .Code 0 }}#f1184c{{ end }}"
-          ],
+          "background_templates": ["{{ if gt .Code 0 }}#f1184c{{ end }}"],
           "foreground": "#ffffff",
           "powerline_symbol": "\ue0b0",
           "properties": {
             "always_enabled": true
           },
           "style": "powerline",
-          "template": " \ue23a{{ if gt .Code 0 }}\uf00d{{ else }}\uf42e{{ end }} ",
+          "template": " {{ if gt .Code 0 }}\uf00d{{ else }}\uf42e{{ end }} ",
           "trailing_diamond": "\ue0b4",
           "type": "exit"
         }
