@@ -1,7 +1,7 @@
 # =================================
 # OG Custom cfg
 # =================================
-oh-my-posh init pwsh --config "%USERPROFILE%/.dotfiles/powershell/ohmypush_theme.json" | Invoke-Expression
+oh-my-posh init pwsh --config "~/.dotfiles/powershell/ohmypush_theme.json" | Invoke-Expression
 # =================================
 
 # =================================
