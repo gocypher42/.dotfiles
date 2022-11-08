@@ -35,8 +35,8 @@ colors:
 env:
   WINIT_X11_SCALE_FACTOR: "1"
 
-size: 8.0
 
 font:
+  size: 11.5
   normal:
     family: "JetBrainsMono Nerd Font Mono"
