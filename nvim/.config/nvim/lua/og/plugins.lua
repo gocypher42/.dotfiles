@@ -35,9 +35,13 @@ require("packer").startup(function(use)
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
     })
     -- lsp installer
-    use("williamboman/nvim-lsp-installer")
     -- lspconfig
-    use("neovim/nvim-lspconfig")
+    -- use("williamboman/nvim-lsp-installer")
+    use({
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+    })
     -- lsp autocomplete
     use("hrsh7th/nvim-cmp")
     use("hrsh7th/cmp-buffer")
