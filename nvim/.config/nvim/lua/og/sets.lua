@@ -28,7 +28,7 @@ set.autoindent = true --Good auto indent
 set.laststatus = 0 --Always display the status line
 set.number = true --Line numbers
 set.cursorline = true --Enable highlighting of the current line
--- background = dark --tell vim what the background color looks like
+-- set.background = dark --tell vim what the background color looks like
 set.showtabline = 4 --Always show tabs
 
 set.showmode = false --We don't need to see things like -- INSERT -- anymore

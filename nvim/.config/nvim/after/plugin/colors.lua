@@ -1,3 +1,3 @@
 require("onedark").setup({
-    transparent = true,
+    transparent = false,
 })
