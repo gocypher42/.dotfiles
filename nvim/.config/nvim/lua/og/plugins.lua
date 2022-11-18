@@ -98,4 +98,5 @@ require("packer").startup(function(use)
     })
 
     use("mfussenegger/nvim-jdtls")
+    use("kyazdani42/nvim-web-devicons")
 end)
