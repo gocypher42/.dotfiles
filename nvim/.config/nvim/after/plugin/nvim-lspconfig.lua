@@ -16,17 +16,19 @@ require("mason-lspconfig").setup({
     },
 })
 
+local mason_lspconfig = require("mason-lspconfig")
+local lspconfig = require("lspconfig")
+
 -- LSP Native Config
-require("mason-lspconfig").setup_handlers({
+mason_lspconfig.setup_handlers({
     function(server_name)
-        local opts = {
+        lspconfig[server_name].setup({
             on_attach = function(client)
                 make_keybinds()
             end,
             settings = {
                 Lua = { diagnostics = { globals = { "vim" } } },
             },
-        }
-        require("lspconfig")[server_name].setup({ opts })
+        })
     end,
 })
