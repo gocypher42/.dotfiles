@@ -24,7 +24,7 @@ local sources = {
 }
 
 local lsp_formatting = function(bufnr)
-    vim.lsp.buf.format()
+    vim.lsp.buf.format({ bufnr = bufnr })
     -- vim.lsp.buf.format({
     --     filter = function(client)
     --         return client.name == "null-ls"
