@@ -3,7 +3,9 @@ local formatting = require("null-ls").builtins.formatting
 local sources = {
     formatting.clang_format.with({
         filetypes = { "cpp" },
-        extra_args = { '--style={BasedOnStyle: microsoft, ColumnLimit: 80}'},
+        extra_args = {
+            "--style={BasedOnStyle: microsoft, ColumnLimit: 80, IndentWidth: 2}",
+        },
     }),
     formatting.clang_format.with({
         filetypes = { "java" },

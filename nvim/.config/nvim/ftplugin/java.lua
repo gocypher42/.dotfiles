@@ -32,5 +32,6 @@ local config = {
 require("jdtls").start_or_attach(config)
 
 require("og.lsp_keybinds").make_keybinds()
+
 vim.opt.tabstop = 2 
 vim.opt.shiftwidth = 2
