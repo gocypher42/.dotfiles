@@ -38,5 +38,5 @@ map("n", "<space>fb", "<cmd>Telescope file_browser<cr>")
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
-map("n", "<leader>ng", "<cmd>Neogit<cr>")
 map("n", "<leader>x", "<cmd>Ex<cr>")
+
