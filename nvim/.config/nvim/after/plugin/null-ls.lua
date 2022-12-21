@@ -2,7 +2,7 @@ local formatting = require("null-ls").builtins.formatting
 
 local sources = {
     formatting.clang_format.with({
-        filetypes = { "cpp" },
+        filetypes = { "cpp", "h" },
         extra_args = {
             "--style={BasedOnStyle: microsoft, ColumnLimit: 80, IndentWidth: 2}",
         },
@@ -25,25 +25,25 @@ local sources = {
     formatting.prettier,
 }
 
-local lsp_formatting = function(bufnr)
-    vim.lsp.buf.format({
-        filter = function(client)
-            return client.name == "null-ls"
-        end,
-        bufnr = bufnr,
-    })
-
-    print("Document Formated!")
-end
+-- local lsp_formatting = function(bufnr)
+--     vim.lsp.buf.format({
+--         filter = function(client)
+--             return client.name == "null-ls"
+--         end,
+--         bufnr = bufnr,
+--     })
+--
+--     print("Document Formated!")
+-- end
 
 -- Formatter config
 require("null-ls").setup({
     sources = sources,
-    on_attach = function(client)
-        if client.supports_method("textDocument/formatting") then
-            vim.keymap.set("n", "<leader>f", function()
-                lsp_formatting(0)
-            end, { buffer = 0 })
-        end
-    end,
+    -- on_attach = function(client)
+    --     if client.supports_method("textDocument/formatting") then
+    --         vim.keymap.set("n", "<leader>f", function()
+    --             lsp_formatting(0)
+    --         end, { buffer = 0 })
+    --     end
+    -- end,
 })

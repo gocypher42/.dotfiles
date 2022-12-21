@@ -1,6 +1,7 @@
 -- Install Packer if not installed
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+
 if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap = fn.system({
         "git",
@@ -15,8 +16,10 @@ end
 
 require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
-    -- use("navarasu/onedark.nvim")
+    
+    -- Some Colorthemes
     use("ful1e5/onedark.nvim")
+    use("morhetz/gruvbox")
 
     -- Better Syntax Support
     use("sheerun/vim-polyglot")
@@ -34,14 +37,16 @@ require("packer").startup(function(use)
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
     })
+
     -- lsp installer
     -- lspconfig
-    -- use("williamboman/nvim-lsp-installer")
     use({
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
     })
+    use("p00f/clangd_extensions.nvim")
+
     -- lsp autocomplete
     use("hrsh7th/nvim-cmp")
     use("hrsh7th/cmp-buffer")
@@ -50,25 +55,29 @@ require("packer").startup(function(use)
     use("hrsh7th/cmp-nvim-lsp")
     use("saadparwaiz1/cmp_luasnip")
     use("L3MON4D3/luaSnip")
+    use("rafamadriz/friendly-snippets")
+    use("honza/vim-snippets")
 
     -- Telescope
     use({
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.0",
         requires = {
             { "nvim-lua/plenary.nvim" },
+            { "nvim-telescope/telescope-file-browser.nvim" },
             { "nvim-telescope/telescope-fzy-native.nvim" },
         },
     })
-    use({ "nvim-telescope/telescope-file-browser.nvim" })
+
     -- Treesitter
     use({
         "nvim-treesitter/nvim-treesitter",
         run = function()
             require("nvim-treesitter.install").update({ with_sync = true })
         end,
+        requires = {
+            { "nvim-treesitter/nvim-treesitter-context" },
+        },
     })
-    use("nvim-treesitter/nvim-treesitter-context")
 
     -- Formatter
     use("jose-elias-alvarez/null-ls.nvim")
@@ -81,16 +90,11 @@ require("packer").startup(function(use)
         end,
     })
 
-    -- lazy snippets
-    use("rafamadriz/friendly-snippets")
-    use("honza/vim-snippets")
-
     -- Startuo Timer
     use("dstein64/vim-startuptime")
 
     -- Git gutter
     use("airblade/vim-gitgutter")
-
 
     use({
         "lewis6991/impatient.nvim",
@@ -98,10 +102,9 @@ require("packer").startup(function(use)
             require("impatient")
         end,
     })
+
     use("mfussenegger/nvim-jdtls")
-    use("kyazdani42/nvim-web-devicons")
-
-    use "mbbill/undotree"
-    use "tpope/vim-fugitive"
-
+    use("mbbill/undotree")
+    use("tpope/vim-fugitive")
+    use("preservim/nerdtree")
 end)

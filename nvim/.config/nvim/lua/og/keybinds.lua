@@ -24,15 +24,6 @@ map("n", "<C-l>", "<C-w>l")
 map("n", "<leader>o", "o<Esc>")
 map("n", "<leader>O", "O<Esc>")
 
--- Telescope Mapping
-map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
-map("n", "<leader>gf", "<cmd>lua require('telescope.builtin').git_files()<cr>")
-map("n", "<leader>lg", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
-map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
-map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
-map("n", "<leader>gr", "<cmd>Telescope lsp_references<cr>")
-map("n", "<leader>gs", "<cmd>Telescope grep_string<cr>")
-map("n", "<space>fb", "<cmd>Telescope file_browser<cr>")
 
 -- Move half page but keep curso center
 map("n", "<C-d>", "<C-d>zz")
