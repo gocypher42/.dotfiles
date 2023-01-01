@@ -4,7 +4,8 @@ local sources = {
     formatting.clang_format.with({
         filetypes = { "cpp", "h" },
         extra_args = {
-            "--style={BasedOnStyle: microsoft, ColumnLimit: 80, IndentWidth: 2}",
+            -- "--style={BasedOnStyle: microsoft, ColumnLimit: 80, IndentWidth: 2}",
+            "--style={BasedOnStyle: google, ColumnLimit: 80, IndentWidth: 2}",
         },
     }),
     formatting.clang_format.with({
