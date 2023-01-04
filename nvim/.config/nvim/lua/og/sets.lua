@@ -19,6 +19,7 @@ set.signcolumn = "yes"
 set.splitbelow = true --Horizontal splits will automatically be below
 set.splitright = true --Vertical splits will automatically be to the right
 set.conceallevel = 0 --So that I can see `` in markdown files
+
 set.tabstop = 4 --Insert 2 spaces for a tab
 set.shiftwidth = 4 --Change the number of space characters inserted for indentation
 
@@ -26,6 +27,7 @@ set.smarttab = true --Makes tabbing smarter will realize you have 2 vs 4
 set.expandtab = true --Converts tabs to spaces
 set.smartindent = true --Makes indenting smart
 set.autoindent = true --Good auto indent
+
 set.laststatus = 0 --Always display the status line
 set.number = true --Line numbers
 set.cursorline = true --Enable highlighting of the current line

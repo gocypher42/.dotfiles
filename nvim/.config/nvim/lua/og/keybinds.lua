@@ -24,10 +24,8 @@ map("n", "<C-l>", "<C-w>l")
 map("n", "<leader>o", "o<Esc>")
 map("n", "<leader>O", "O<Esc>")
 
-
 -- Move half page but keep curso center
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
 map("n", "<leader>x", "<cmd>Ex<cr>")
-
