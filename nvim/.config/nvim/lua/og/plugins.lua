@@ -16,7 +16,7 @@ end
 
 require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
-    
+
     -- Some Colorthemes
     use("ful1e5/onedark.nvim")
     use("morhetz/gruvbox")
@@ -25,12 +25,7 @@ require("packer").startup(function(use)
     use("sheerun/vim-polyglot")
 
     -- nvim-autopairs
-    use({
-        "windwp/nvim-autopairs",
-        config = function()
-            require("nvim-autopairs").setup({})
-        end,
-    })
+    use("windwp/nvim-autopairs")
 
     -- LuaLine
     use({
