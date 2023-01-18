@@ -5,7 +5,12 @@ local sources = {
         filetypes = { "cpp", "h" },
         extra_args = {
             -- "--style={BasedOnStyle: microsoft, ColumnLimit: 80, IndentWidth: 2}",
-            "--style={BasedOnStyle: google, ColumnLimit: 80, IndentWidth: 2}",
+            -- "--style={BasedOnStyle: google, ColumnLimit: 80, IndentWidth: 2}",
+            -- "--style={BasedOnStyle: gnu, ColumnLimit: 80, IndentWidth: 2}",
+            "--style={"
+                .. "BasedOnStyle: llvm"
+                .. ", "
+                .. "ColumnLimit: 80, IndentWidth: 2, DerivePointerAlignment: false, PointerAlignment: Left, ReferenceAlignment: Left, IndentCaseLabels: true}",
         },
     }),
     formatting.clang_format.with({
