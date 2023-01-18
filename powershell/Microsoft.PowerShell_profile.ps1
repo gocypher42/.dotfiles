@@ -71,3 +71,12 @@ function ps_format {
     Write-Error "file not exist";
 }
 # =================================
+
+function admin {
+    if ($args.Count -gt 0) {   
+        $argList = "& '" + $args + "'"
+        Start-Process "wt.exe" -Verb runAs -ArgumentList $argList
+    } else {
+        Start-Process "wt.exe" -Verb runAs
+    }
+}
