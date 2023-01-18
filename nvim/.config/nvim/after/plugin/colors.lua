@@ -1,6 +1,6 @@
--- require("onedark").setup({
---     transparent = false,
--- })
+require("onedark").setup({
+    transparent = true,
+})
 
-vim.cmd([[colorscheme gruvbox]])
+-- vim.cmd([[colorscheme gruvbox]])
 
