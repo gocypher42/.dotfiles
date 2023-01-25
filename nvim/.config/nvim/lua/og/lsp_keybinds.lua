@@ -4,7 +4,7 @@ local map = vim.keymap.set
 local telescope = require("telescope.builtin")
 
 M.make_keybinds = function(buffer)
-    local opts = {buffer= buffer}
+    local opts = { buffer = buffer }
     map("n", "<leader>ca", vim.lsp.buf.code_action, opts)
     map("n", "K", vim.lsp.buf.hover, opts)
     map("n", "<leader>gt", vim.lsp.buf.type_definition, opts)

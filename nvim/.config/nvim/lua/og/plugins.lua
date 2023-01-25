@@ -101,5 +101,12 @@ require("packer").startup(function(use)
     use("mfussenegger/nvim-jdtls")
     use("mbbill/undotree")
     use("tpope/vim-fugitive")
-    use("preservim/nerdtree")
+    use({
+        "nvim-tree/nvim-tree.lua",
+        requires = {
+            "nvim-tree/nvim-web-devicons", -- optional, for file icons
+        },
+        tag = "nightly", -- optional, updated every week. (see issue #1193)
+    })
+    -- use("preservim/nerdtree")
 end)
