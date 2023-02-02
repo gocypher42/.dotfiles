@@ -15,10 +15,10 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- Better window navigation
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
+map("n", "<C-h>", "<cmd>TmuxNavigateLeft")
+map("n", "<C-j>", "<C-w>TmuxNavigateLeft")
+map("n", "<C-k>", "<C-w>TmuxNavigateLeft")
+map("n", "<C-l>", "<C-w>TmuxNavigateLeft")
 
 -- Add empty new lines
 map("n", "<leader>o", "o<Esc>")

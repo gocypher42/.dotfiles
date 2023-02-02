@@ -1,4 +1,4 @@
-vim.keymap.set("n","<leader>n", vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", "<leader>n", vim.cmd.NvimTreeToggle)
 -- examples for your init.lua
 
 -- disable netrw at the very start of your init.lua (strongly advised)
@@ -25,7 +25,9 @@ require("nvim-tree").setup({
     renderer = {
         group_empty = true,
     },
-    -- filters = {
-    --     dotfiles = true,
-    -- },
+    actions = {
+        open_file = {
+            quit_on_open = true,
+        },
+    },
 })

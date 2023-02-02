@@ -2,7 +2,7 @@ local formatting = require("null-ls").builtins.formatting
 
 local sources = {
     formatting.clang_format.with({
-        filetypes = { "cpp", "h" },
+        filetypes = { "cpp", "h", "c" },
         extra_args = {
             "--style={"
                 .. "BasedOnStyle: llvm"

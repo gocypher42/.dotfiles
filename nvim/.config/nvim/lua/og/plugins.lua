@@ -108,5 +108,5 @@ require("packer").startup(function(use)
         },
         tag = "nightly", -- optional, updated every week. (see issue #1193)
     })
-    -- use("preservim/nerdtree")
+    use 'christoomey/vim-tmux-navigator'
 end)
