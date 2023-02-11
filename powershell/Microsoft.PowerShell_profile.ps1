@@ -7,7 +7,15 @@ oh-my-posh init pwsh --config "~/.dotfiles/powershell/ohmypush_theme.json" | Inv
 # =================================
 # Custom Alias
 # =================================
-function v ($file = ".") { nvim $file }
+# function v ($file = ".") { nvim $file }
+
+function v {
+    $selection = Invoke-Expression -Command "fzf --height 60% --layout=reverse --border"
+    if ($selection -eq "" ){
+        return 
+    } 
+    nvim $selection
+}
 
 function pushmta { mjs pushmta }
 
