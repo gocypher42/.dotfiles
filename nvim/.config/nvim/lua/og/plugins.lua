@@ -15,7 +15,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require("packer").startup(function(use)
-    use("nvim-tree/nvim-web-devicons")
+    use({
+        "akinsho/bufferline.nvim",
+        tag = "v3.*",
+        requires = "nvim-tree/nvim-web-devicons",
+    })
+
     use("wbthomason/packer.nvim")
 
     -- Some Colorthemes
