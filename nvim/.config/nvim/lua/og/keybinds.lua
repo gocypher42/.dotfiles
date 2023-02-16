@@ -15,7 +15,7 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- Better window navigation
-map("n", "<C-h>", "<cmd>TmuxNavigateLeft")
+map("n", "<C-h>", "<CMD>TmuxNavigateLeft")
 map("n", "<C-j>", "<C-w>TmuxNavigateLeft")
 map("n", "<C-k>", "<C-w>TmuxNavigateLeft")
 map("n", "<C-l>", "<C-w>TmuxNavigateLeft")
@@ -28,4 +28,6 @@ map("n", "<leader>O", "O<Esc>")
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
-map("n", "<leader>x", "<cmd>Ex<cr>")
+map("n", "<leader>x", "<CMD>Ex<CR>")
+map("n", "<F8>", "<CMD>bn<CR>")
+map("n", "<F7>", "<CMD>bp<CR>")

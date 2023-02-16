@@ -12,7 +12,7 @@ mason_lspconfig.setup({
         "lemminx",
         "pyright",
         "rust_analyzer",
-        "sumneko_lua",
+        "lua_ls",
         "tsserver",
     },
 })
@@ -22,7 +22,7 @@ local on_attach = function(client, buffer)
     client.server_capabilities.documentFormattingProvider = false
 end
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
     on_attach = on_attach,
     settings = {
         Lua = { diagnostics = { globals = { "vim" } } },
@@ -40,13 +40,8 @@ lspconfig.omnisharp.setup({
             "v:lua.vim.lsp.omnifunc"
         )
     end,
-    -- cmd = {
-    --     "omnisharp",
-    --     "--languageserver",
-    --     "--hostPID",
-    --     tostring(pid),
-    -- },
 })
+
 lspconfig.html.setup({ on_attach = on_attach })
 lspconfig.lemminx.setup({ on_attach = on_attach })
 lspconfig.powershell_es.setup({ on_attach = on_attach })

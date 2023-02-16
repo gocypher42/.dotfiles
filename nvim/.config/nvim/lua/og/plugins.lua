@@ -15,6 +15,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require("packer").startup(function(use)
+    use("nvim-tree/nvim-web-devicons")
     use("wbthomason/packer.nvim")
 
     -- Some Colorthemes
@@ -108,5 +109,5 @@ require("packer").startup(function(use)
         },
         tag = "nightly", -- optional, updated every week. (see issue #1193)
     })
-    use 'christoomey/vim-tmux-navigator'
+    use("christoomey/vim-tmux-navigator")
 end)
