@@ -52,7 +52,7 @@ function update_nvim {
     
     New-Item -Path "c:\" -Name "temp" -ItemType "directory" -Force
     Invoke-WebRequest -Uri $nvim_download_link -OutFile $zip_file_path
-    Expand-Archive -Path zip_file_path -DestinationPath $archive_path -Force
+    Expand-Archive -Path $zip_file_path -DestinationPath $archive_path -Force
     Remove-Item -Path $tools_path -Recurse -Force
     Move-Item -Path "$archive_path\$module" -Destination $tools_path
     Remove-Item -Path $zip_file_path -Recurse -Force
