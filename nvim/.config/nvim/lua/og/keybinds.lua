@@ -29,5 +29,8 @@ map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
 map("n", "<leader>x", "<CMD>Ex<CR>")
-map("n", "<F8>", "<CMD>bn<CR>")
-map("n", "<F7>", "<CMD>bp<CR>")
+
+-- BufferLine 
+map("n", "<F8>", "<CMD>BufferLineCycleNext<CR>")
+map("n", "<F7>", "<CMD>BufferLineCyclePrev<CR>")
+map("n", "<leader>w", "<CMD>BufferLinePickClose<CR>")
