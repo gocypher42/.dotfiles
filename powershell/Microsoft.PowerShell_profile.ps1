@@ -45,15 +45,18 @@ function touch($file) { "" | Out-File $file -Encoding ascii }
 # =================================
 function update_nvim {
     $nvim_download_link = "https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip"
-    $archive_path = "c:\temp\nvim-win64.zip"
-    $tools_path = "c:\tools\neovim\nvim-win64"
-
+    $module = "nvim-win64"
+    $archive_path = "c:\temp"
+    $tools_path = "c:\tools\neovim\$module"    
+    $zip_file_path = "$archive_path\$module.zip"
+    
     New-Item -Path "c:\" -Name "temp" -ItemType "directory" -Force
-    Invoke-WebRequest -Uri $nvim_download_link -OutFile $archive_path
-    Expand-Archive -Path $archive_path -DestinationPath "c:\tmp" -Force
+    Invoke-WebRequest -Uri $nvim_download_link -OutFile $zip_file_path
+    Expand-Archive -Path $zip_file_path -DestinationPath $archive_path -Force
     Remove-Item -Path $tools_path -Recurse -Force
-    Move-Item -Path "C:\temp\nvim-win64" -Destination $tools_path
-    Remove-Item -Path "C:\temp\nvim-win64" -Recurse -Force
+    Move-Item -Path "$archive_path\$module" -Destination $tools_path
+    Remove-Item -Path $zip_file_path -Recurse -Force
+    
     c:\tools\neovim\nvim-win64\bin\nvim.exe --version
 }
 # =================================
