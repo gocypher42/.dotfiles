@@ -26,6 +26,7 @@ require("packer").startup(function(use)
     -- Some Colorthemes
     use("ful1e5/onedark.nvim")
     use("morhetz/gruvbox")
+    use("Mofiqul/dracula.nvim")
 
     -- Better Syntax Support
     use("sheerun/vim-polyglot")

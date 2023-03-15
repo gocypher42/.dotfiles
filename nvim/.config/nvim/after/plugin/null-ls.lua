@@ -5,9 +5,14 @@ local sources = {
         filetypes = { "cpp", "h", "c" },
         extra_args = {
             "--style={"
-                .. "BasedOnStyle: llvm"
-                .. ", "
-                .. "ColumnLimit: 80, IndentWidth: 2, DerivePointerAlignment: false, PointerAlignment: Left, ReferenceAlignment: Left, IndentCaseLabels: true}",
+                .. "BasedOnStyle: llvm, "
+                .. "ColumnLimit: 80, "
+                .. "IndentWidth: 2, "
+                .. "DerivePointerAlignment: false, "
+                .. "PointerAlignment: Left, "
+                .. "ReferenceAlignment: Left, "
+                .. "IndentCaseLabels: true"
+                .. "}",
         },
     }),
     formatting.clang_format.with({
@@ -28,25 +33,6 @@ local sources = {
     formatting.prettier,
 }
 
--- local lsp_formatting = function(bufnr)
---     vim.lsp.buf.format({
---         filter = function(client)
---             return client.name == "null-ls"
---         end,
---         bufnr = bufnr,
---     })
---
---     print("Document Formated!")
--- end
-
--- Formatter config
 require("null-ls").setup({
     sources = sources,
-    -- on_attach = function(client)
-    --     if client.supports_method("textDocument/formatting") then
-    --         vim.keymap.set("n", "<leader>f", function()
-    --             lsp_formatting(0)
-    --         end, { buffer = 0 })
-    --     end
-    -- end,
 })
