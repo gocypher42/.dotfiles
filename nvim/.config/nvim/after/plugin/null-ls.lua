@@ -28,7 +28,7 @@ local sources = {
     }),
     formatting.black.with({ extra_args = { "-l", "80" } }),
     formatting.rustfmt.with({
-        extra_args = { "--config", "max_width=80" },
+        extra_args = { "--config", "max_width=80", "--edition", "2021" },
     }),
     formatting.prettier,
 }
