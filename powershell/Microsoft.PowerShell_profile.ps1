@@ -7,13 +7,10 @@ oh-my-posh init pwsh --config "~/.dotfiles/powershell/ohmypush_theme.json" | Inv
 # =================================
 # Custom Alias
 # =================================
-# function v ($file = ".") { nvim $file }
-
-function v {
-    $selection = Invoke-Expression -Command "fzf --height 60% --layout=reverse --border"
-    if ($selection -eq "" ){
-        return 
-    } 
+function v 
+{
+    $selection = Invoke-Expression -Command "fzf"
+    if ( -not $selection ) { return }
     nvim $selection
 }
 
@@ -37,7 +34,7 @@ function nvim_cfg { Set-Location $env:USERPROFILE\AppData\Local\nvim }
 
 function msys ($project) { Set-Location -Path D:\Systems\All\$project }
 
-function touch($file) { "" | Out-File $file -Encoding ascii }
+function touch($file) { "" | Out-File $file -Encoding utf8 }
 # =================================
 
 # =================================
@@ -61,11 +58,15 @@ function update_nvim {
 }
 # =================================
 
-function admin {
-    if ($args.Count -gt 0) {   
+function admin 
+{
+    if ($args.Count -gt 0) 
+    {   
         $argList = "& '" + $args + "'"
         Start-Process "wt.exe" -Verb runAs -ArgumentList $argList
-    } else {
+    } 
+    else 
+    {
         Start-Process "wt.exe" -Verb runAs
     }
 }

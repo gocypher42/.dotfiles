@@ -5,7 +5,7 @@ local sources = {
         filetypes = { "cpp", "h", "c" },
         extra_args = {
             "--style={"
-                .. "BasedOnStyle: llvm, "
+                .. "BasedOnStyle: microsoft, "
                 .. "ColumnLimit: 80, "
                 .. "IndentWidth: 2, "
                 .. "DerivePointerAlignment: false, "
