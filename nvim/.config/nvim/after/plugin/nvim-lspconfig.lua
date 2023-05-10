@@ -45,5 +45,6 @@ lspconfig.omnisharp.setup({
 lspconfig.html.setup({ on_attach = on_attach })
 lspconfig.lemminx.setup({ on_attach = on_attach })
 lspconfig.powershell_es.setup({ on_attach = on_attach })
+lspconfig.jdtls.setup({ on_attach = on_attach })
 
 require("clangd_extensions").setup({ server = { on_attach = on_attach } })
