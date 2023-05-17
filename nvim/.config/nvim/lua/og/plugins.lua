@@ -27,6 +27,7 @@ require("packer").startup(function(use)
     use("ful1e5/onedark.nvim")
     use("morhetz/gruvbox")
     use("Mofiqul/dracula.nvim")
+    use("cpea2506/one_monokai.nvim")
 
     -- Better Syntax Support
     use("sheerun/vim-polyglot")
@@ -108,12 +109,12 @@ require("packer").startup(function(use)
     use("mfussenegger/nvim-jdtls")
     use("mbbill/undotree")
     use("tpope/vim-fugitive")
-    use({
-        "nvim-tree/nvim-tree.lua",
-        requires = {
-            "nvim-tree/nvim-web-devicons", -- optional, for file icons
-        },
-        tag = "nightly", -- optional, updated every week. (see issue #1193)
-    })
+    -- use({
+    --     "nvim-tree/nvim-tree.lua",
+    --     requires = {
+    --         "nvim-tree/nvim-web-devicons", -- optional, for file icons
+    --     },
+    --     tag = "nightly", -- optional, updated every week. (see issue #1193)
+    -- })
     use("christoomey/vim-tmux-navigator")
 end)

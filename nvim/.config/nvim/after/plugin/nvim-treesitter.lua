@@ -8,7 +8,7 @@ require("nvim-treesitter.configs").setup({
     -- auto_install = true,
 
     -- List of parsers to ignore installing (for "all")
-    ignore_install = { "starlark", "rnoweb", "norg", "fortran" },
+    ignore_install = { "astro", "starlark", "rnoweb", "norg", "fortran" },
 
     highlight = {
         -- `false` will disable the whole extension

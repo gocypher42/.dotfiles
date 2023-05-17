@@ -39,7 +39,8 @@ cmp.setup({
         { name = "buffer", keyword_length = 5 },
     },
     experimental = {
-        ghost_text = true,
+        -- ghost_text = true,
+        ghost_text = false,
     },
     sorting = {
         comparators = {

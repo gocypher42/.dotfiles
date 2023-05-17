@@ -11,7 +11,11 @@ local sources = {
                 .. "DerivePointerAlignment: false, "
                 .. "PointerAlignment: Left, "
                 .. "ReferenceAlignment: Left, "
-                .. "IndentCaseLabels: true"
+                .. "IndentCaseLabels: true, "
+                .. "BinPackArguments: false, "
+                .. "BinPackParameters: false, "
+                .. "ConstructorInitializerAllOnOneLineOrOnePerLine: true, "
+                .. "AllowShortFunctionsOnASingleLine: All"
                 .. "}",
         },
     }),
