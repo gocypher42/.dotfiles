@@ -64,11 +64,9 @@ function admin
     {   
         $argList = "& '" + $args + "'"
         Start-Process "wt.exe" -Verb runAs -ArgumentList $argList
+        return
     } 
-    else 
-    {
-        Start-Process "wt.exe" -Verb runAs
-    }
+    Start-Process "wt.exe" -Verb runAs
 }
 
 function refreshenv {
