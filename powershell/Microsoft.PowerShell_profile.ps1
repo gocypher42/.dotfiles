@@ -9,9 +9,9 @@ oh-my-posh init pwsh --config "~/.dotfiles/powershell/ohmypush_theme.json" | Inv
 # =================================
 function v 
 {
-    $selection = Invoke-Expression -Command "fzf"
-    if ( -not $selection ) { return }
-    nvim $selection
+    $cmd = "rg --files '.' -g '!*.git\*' | fzf"
+    $selection = Invoke-Expression -Command $cmd
+    if ( $selection ) { nvim $selection }
 }
 
 function pushmta { mjs pushmta }
