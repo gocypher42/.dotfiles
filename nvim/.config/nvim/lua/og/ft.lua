@@ -13,3 +13,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
         vim.opt.syntax = "xml"
     end,
 })
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+    pattern = { "*.mxpt" },
+    callback = function()
+        vim.opt.filetype = "xml"
+        vim.opt.syntax = "xml"
+    end,
+})
