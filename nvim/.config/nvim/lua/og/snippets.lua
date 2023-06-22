@@ -48,7 +48,7 @@ ls.add_snippets("cmake", {
 
 ls.add_snippets("cpp", {
     s(
-        "apptemplate",
+        "intmain",
         fmt(
             [[ 
             #include <iostream>
@@ -61,7 +61,11 @@ ls.add_snippets("cpp", {
             private:
             }};
 
-            int run(int argc, char* argv[])
+            // If running app in Marcotte env, to compile, run:
+            //    cmd /c compile exe main.cpp
+            // FYI, Marcotte uses c++11
+
+            int App::run(int argc, char* argv[])
             {{
               // Place code here!
               std::cout << "Hello, world!" << std::endl;
