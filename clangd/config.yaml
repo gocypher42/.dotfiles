@@ -1,0 +1,17 @@
+CompileFlags:
+  Add:
+    - '-std=c++11'
+    - '-ID:\repos\core\util'
+    - '-ID:\repos\core\common'
+    - '-ID:\repos\mtsx\MTSX'
+    - '-ID:\repos\mppd\mppd3'
+    - '-ID:\repos\process\genx2\include'
+    - '-ID:\repos\ReadyMix\beton\src'
+    - '-ID:\repos\ReadyMix\beton\src\beton.common'
+    - '-ID:\repos\ReadyMix\beton\src\beton.common\taxes'
+    - '-ID:\repos\ReadyMix\beton\src\beton.db'
+    - '-ID:\repos\ReadyMix\beton\src\beton.server'
+    - '-ID:\repos\ReadyMix\beton\src\beton.server\WebServices'
+    - '-ID:\repos\ReadyMix\beton\src\sprvisor'
+Diagnostics:
+  UnusedIncludes: Strict

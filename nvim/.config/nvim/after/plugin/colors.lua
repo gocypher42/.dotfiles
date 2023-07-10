@@ -10,16 +10,16 @@
 
 -- Dracula
 --
--- vim.cmd([[colorscheme dracula]])
---
--- local dracula = require("dracula")
--- dracula.setup({
---     transparent_bg = true, -- default false
--- })
+vim.cmd([[colorscheme dracula]])
+
+local dracula = require("dracula")
+dracula.setup({
+    transparent_bg = true, -- default false
+})
 
 -- One Monokai
 -- 
-require("one_monokai").setup({
-    -- your options
-})
+-- require("one_monokai").setup({
+--     -- your options
+-- })
 
