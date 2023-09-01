@@ -19,7 +19,6 @@ mason_lspconfig.setup({
 
 local on_attach = function(client, buffer)
     require("og.lsp_keybinds").make_keybinds(buffer)
-    client.server_capabilities.documentFormattingProvider = false
 end
 
 lspconfig.lua_ls.setup({
@@ -35,18 +34,16 @@ lspconfig.html.setup({ on_attach = on_attach })
 lspconfig.lemminx.setup({ on_attach = on_attach })
 lspconfig.powershell_es.setup({ on_attach = on_attach })
 lspconfig.jdtls.setup({ on_attach = on_attach })
-
-require("clangd_extensions").setup({
-    server = {
-        on_attach = function(client, buffer)
-            require("clangd_extensions.inlay_hints").setup_autocmd()
-            require("clangd_extensions.inlay_hints").set_inlay_hints()
-            on_attach(client, buffer)
-        end,
-        cmd = {
-            "clangd",
-            "--enable-config",
-            "--clang-tidy",
-        },
+lspconfig.clangd.setup({
+    on_attach = function(client, buffer)
+        require("clangd_extensions.inlay_hints").setup_autocmd()
+        require("clangd_extensions.inlay_hints").set_inlay_hints()
+        on_attach(client, buffer)
+    end,
+    cmd = {
+        "clangd",
+        "--enable-config",
+        "--clang-tidy",
     },
 })
+
