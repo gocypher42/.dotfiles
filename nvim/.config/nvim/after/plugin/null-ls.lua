@@ -2,24 +2,6 @@ local formatting = require("null-ls").builtins.formatting
 
 local sources = {
     formatting.clang_format.with({
-        filetypes = { "cpp", "h", "c" },
-        -- extra_args = {
-        --     "--style={"
-        --         .. "BasedOnStyle: microsoft, "
-        --         .. "ColumnLimit: 80, "
-        --         .. "IndentWidth: 2, "
-        --         .. "DerivePointerAlignment: false, "
-        --         .. "PointerAlignment: Left, "
-        --         .. "ReferenceAlignment: Left, "
-        --         .. "IndentCaseLabels: true, "
-        --         .. "BinPackArguments: false, "
-        --         .. "BinPackParameters: false, "
-        --         .. "ConstructorInitializerAllOnOneLineOrOnePerLine: true, "
-        --         .. "AllowShortFunctionsOnASingleLine: All"
-        --         .. "}",
-        -- },
-    }),
-    formatting.clang_format.with({
         filetypes = { "java" },
         extra_args = { "-style=Google" },
     }),
