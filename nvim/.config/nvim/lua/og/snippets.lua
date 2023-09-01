@@ -56,7 +56,7 @@ ls.add_snippets("cpp", {
             class App
             {{
             public:
-              int Run(int argc, char* argv[]);
+              static int Run(int argc, char** argv);
 
             private:
             }};
@@ -65,7 +65,7 @@ ls.add_snippets("cpp", {
             //    cmd /c compile exe main.cpp
             // FYI, Marcotte uses c++11
 
-            int App::Run(int argc, char* argv[])
+            int App::Run(int argc, char** argv)
             {{
               // Place code here!
               std::cout << "Hello, world!" << std::endl;
@@ -75,8 +75,7 @@ ls.add_snippets("cpp", {
 
             int main(int argc, char* argv[])
             {{
-              App app;
-              return app.Run(argc, argv);
+              return App::Run(argc, argv);
             }}
             ]],
             {

@@ -1,17 +1,29 @@
+Diagnostics:
+  UnusedIncludes: Strict
+
 CompileFlags:
   Add:
     - '-std=c++11'
+    # Utils
     - '-ID:\repos\core\util'
     - '-ID:\repos\core\common'
+    # mtsx
     - '-ID:\repos\mtsx\MTSX'
+    # mppd
     - '-ID:\repos\mppd\mppd3'
+    # Process
     - '-ID:\repos\process\genx2\include'
+    - '-ID:\repos\process\genx2\genxlib'
+    # ReadyMix
     - '-ID:\repos\ReadyMix\beton\src'
+    - '-ID:\repos\ReadyMix\beton\src\beton.client'
     - '-ID:\repos\ReadyMix\beton\src\beton.common'
     - '-ID:\repos\ReadyMix\beton\src\beton.common\taxes'
     - '-ID:\repos\ReadyMix\beton\src\beton.db'
     - '-ID:\repos\ReadyMix\beton\src\beton.server'
     - '-ID:\repos\ReadyMix\beton\src\beton.server\WebServices'
     - '-ID:\repos\ReadyMix\beton\src\sprvisor'
-Diagnostics:
-  UnusedIncludes: Strict
+    # Tools
+    - '-ID:\repos\tools\msuivi\src'
+    - '-ID:\repos\tools\mta\src'
+

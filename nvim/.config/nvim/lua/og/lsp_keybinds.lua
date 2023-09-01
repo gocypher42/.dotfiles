@@ -13,7 +13,7 @@ M.make_keybinds = function(buffer)
     map("n", "<leader>r", vim.lsp.buf.rename, opts)
     map("n", "<leader>f", vim.lsp.buf.format, opts)
 
-    map("n", "<leader>gi", telescope.lsp_implementations, { buffer = buffer })
+    map("n", "<leader>gi", telescope.lsp_implementations, opts)
     map("n", "<leader>dl", telescope.diagnostics, opts)
     map("n", "<leader>gd", telescope.lsp_definitions, opts)
     map("n", "<leader>gr", telescope.lsp_references, opts)

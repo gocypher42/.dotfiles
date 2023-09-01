@@ -31,17 +31,6 @@ lspconfig.lua_ls.setup({
 lspconfig.rust_analyzer.setup({ on_attach = on_attach })
 lspconfig.pyright.setup({ on_attach = on_attach })
 lspconfig.tsserver.setup({ on_attach = on_attach })
-lspconfig.omnisharp.setup({
-    on_attach = function(client, buffer)
-        on_attach(client, buffer)
-        vim.api.nvim_buf_set_option(
-            buffer,
-            "omnifunc",
-            "v:lua.vim.lsp.omnifunc"
-        )
-    end,
-})
-
 lspconfig.html.setup({ on_attach = on_attach })
 lspconfig.lemminx.setup({ on_attach = on_attach })
 lspconfig.powershell_es.setup({ on_attach = on_attach })
@@ -49,12 +38,15 @@ lspconfig.jdtls.setup({ on_attach = on_attach })
 
 require("clangd_extensions").setup({
     server = {
-        on_attach = on_attach,
+        on_attach = function(client, buffer)
+            require("clangd_extensions.inlay_hints").setup_autocmd()
+            require("clangd_extensions.inlay_hints").set_inlay_hints()
+            on_attach(client, buffer)
+        end,
         cmd = {
             "clangd",
             "--enable-config",
             "--clang-tidy",
-            "--offset-encoding=utf-16",
         },
     },
 })
