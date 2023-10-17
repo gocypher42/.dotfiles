@@ -36,8 +36,6 @@ lspconfig.powershell_es.setup({ on_attach = on_attach })
 lspconfig.jdtls.setup({ on_attach = on_attach })
 lspconfig.clangd.setup({
     on_attach = function(client, buffer)
-        require("clangd_extensions.inlay_hints").setup_autocmd()
-        require("clangd_extensions.inlay_hints").set_inlay_hints()
         on_attach(client, buffer)
     end,
     cmd = {
@@ -46,4 +44,4 @@ lspconfig.clangd.setup({
         "--clang-tidy",
     },
 })
-
+require("clangd_extensions").setup()
