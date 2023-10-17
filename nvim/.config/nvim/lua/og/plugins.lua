@@ -82,9 +82,6 @@ require("packer").startup(function(use)
         },
     })
 
-    -- Formatter
-    use("jose-elias-alvarez/null-ls.nvim")
-
     -- Commenter
     use({
         "numToStr/Comment.nvim",

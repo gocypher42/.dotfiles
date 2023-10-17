@@ -35,9 +35,7 @@ lspconfig.lemminx.setup({ on_attach = on_attach })
 lspconfig.powershell_es.setup({ on_attach = on_attach })
 lspconfig.jdtls.setup({ on_attach = on_attach })
 lspconfig.clangd.setup({
-    on_attach = function(client, buffer)
-        on_attach(client, buffer)
-    end,
+    on_attach = on_attach,
     cmd = {
         "clangd",
         "--enable-config",
