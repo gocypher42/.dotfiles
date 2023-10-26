@@ -35,6 +35,11 @@ map("n", "<F8>", "<CMD>BufferLineCycleNext<CR>")
 map("n", "<F7>", "<CMD>BufferLineCyclePrev<CR>")
 map("n", "<leader>w", "<CMD>BufferLinePickClose<CR>")
 
+-- Better QuickFix
+map("n", "<F9>", "<CMD>cp<CR>zz")
+map("n", "<F10>", "<CMD>cn<CR>zz")
+map("n", "<leader>cc", "<CMD>ccl<CR>")
+
 -- Marcotte specific commands
 local function GetFileExtension(url)
     return url:match("^.+(%..+)$")
