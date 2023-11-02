@@ -15,13 +15,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require("packer").startup(function(use)
-    use({
-        "akinsho/bufferline.nvim",
-        tag = "v3.*",
-        requires = "nvim-tree/nvim-web-devicons",
-    })
-
     use("wbthomason/packer.nvim")
+
+    use("nvim-tree/nvim-web-devicons")
 
     -- Some Colorthemes
     use("ful1e5/onedark.nvim")
@@ -106,12 +102,5 @@ require("packer").startup(function(use)
     use("mfussenegger/nvim-jdtls")
     use("mbbill/undotree")
     use("tpope/vim-fugitive")
-    -- use({
-    --     "nvim-tree/nvim-tree.lua",
-    --     requires = {
-    --         "nvim-tree/nvim-web-devicons", -- optional, for file icons
-    --     },
-    --     tag = "nightly", -- optional, updated every week. (see issue #1193)
-    -- })
     use("christoomey/vim-tmux-navigator")
 end)
