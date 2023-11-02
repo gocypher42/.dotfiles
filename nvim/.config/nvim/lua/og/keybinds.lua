@@ -15,10 +15,10 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- Better window navigation
-map("n", "<C-h>", "<CMD>TmuxNavigateLeft")
-map("n", "<C-j>", "<C-w>TmuxNavigateLeft")
-map("n", "<C-k>", "<C-w>TmuxNavigateLeft")
-map("n", "<C-l>", "<C-w>TmuxNavigateLeft")
+map("n", "<C-h>", "<CMD>TmuxNavigateLeft<CR>")
+map("n", "<C-l>", "<CMD>TmuxNavigateRight<CR>")
+map("n", "<C-j>", "<CMD>TmuxNavigateDown<CR>")
+map("n", "<C-k>", "<CMD>TmuxNavigateUp<CR>")
 
 -- Add empty new lines
 map("n", "<leader>o", "o<Esc>")
@@ -31,9 +31,9 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "<leader>x", "<CMD>Ex<CR>")
 
 -- BufferLine
-map("n", "<F8>", "<CMD>BufferLineCycleNext<CR>")
-map("n", "<F7>", "<CMD>BufferLineCyclePrev<CR>")
-map("n", "<leader>w", "<CMD>BufferLinePickClose<CR>")
+-- map("n", "<F8>", "<CMD>BufferLineCycleNext<CR>")
+-- map("n", "<F7>", "<CMD>BufferLineCyclePrev<CR>")
+-- map("n", "<leader>w", "<CMD>BufferLinePickClose<CR>")
 
 -- Better QuickFix
 map("n", "<F9>", "<CMD>cp<CR>zz")
