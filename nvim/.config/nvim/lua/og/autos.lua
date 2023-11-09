@@ -1,8 +1,0 @@
--- vim.api.nvim_create_autocmd("FileType", {
---     pattern = { "cpp", "h" },
---     callback = function()
---         vim.schedule(function()
---             print("testing from cpp")
---         end)
---     end,
--- })
