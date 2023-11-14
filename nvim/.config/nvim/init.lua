@@ -293,6 +293,7 @@ vim.o.cc = "80"
 vim.o.cursorline = true
 vim.o.scrolloff = 8
 vim.o.compatible = false
+vim.o.wrap = false
 
 -- [[ Basic Keymaps ]]
 
@@ -334,6 +335,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move half a page up and center
 vim.keymap.set("n", "<F9>", "<CMD>cp<CR>zz", { desc = "Go to previous quickfix item" })
 vim.keymap.set("n", "<F10>", "<CMD>cn<CR>zz", { desc = "Go to next quickfix item" })
 vim.keymap.set("n", "<leader>cc", "<CMD>ccl<CR>", { desc = "Close quickfix list" })
+
+-- undotree
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Close quickfix list" })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -571,11 +575,17 @@ require("mason-lspconfig").setup()
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  clangd = {},
+  clangd = {
+    cmd = {
+      "clangd",
+      "--enable-config",
+      "--clang-tidy",
+    },
+  },
   -- gopls = {},
   pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
+  rust_analyzer = {},
+  tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
@@ -608,6 +618,7 @@ mason_lspconfig.setup_handlers({
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
+      cmd = (servers[server_name] or {}).cmd,
     })
   end,
 })
