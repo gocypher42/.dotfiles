@@ -167,6 +167,7 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
+      "nvim-treesitter/nvim-treesitter-context",
     },
     build = ":TSUpdate",
   },
@@ -251,9 +252,10 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.cc = "80"
 vim.o.cursorline = true
-vim.o.scrolloff = 8
+vim.o.scrolloff = 12
 vim.o.compatible = false
 vim.o.wrap = false
+vim.o.relativenumber = true
 
 -- [[ Basic Keymaps ]]
 
@@ -386,6 +388,7 @@ vim.keymap.set("n", "<leader>sr", require("telescope.builtin").resume, { desc = 
 -- See `:help nvim-treesitter`
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 require("nvim-treesitter.install").compilers = { "clang", "gcc" }
+require("treesitter-context").setup()
 vim.defer_fn(function()
   require("nvim-treesitter.configs").setup({
     -- Add languages to be installed here that you want installed for treesitter
