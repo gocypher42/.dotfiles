@@ -43,7 +43,16 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.cc = "80"
 vim.o.cursorline = true
-vim.o.scrolloff = 12
+vim.o.scrolloff = 8
 vim.o.compatible = false
 vim.o.wrap = false
 vim.o.relativenumber = true
+
+ -- NOTE: Add new filetype
+vim.filetype.add({
+  extension = {
+    CPP = "cpp"
+  },
+  filename = {},
+  pattern = {}
+})
