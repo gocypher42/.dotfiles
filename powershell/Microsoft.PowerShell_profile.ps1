@@ -20,6 +20,8 @@ function gs { git status }
 
 function gb { git branch -l -vv }
 
+function lg { lazygit }
+
 function rd ($dir) { cmd.exe /c "rd /s /q $dir" }
 # =================================
 
@@ -43,16 +45,16 @@ function touch($file) { "" | Out-File $file -Encoding utf8 }
 function update_nvim {
     $nvim_download_link = "https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip"
     $module = "nvim-win64"
-    $archive_path = "c:\temp"
+    $archive_path = "c:\nvim_temp"
     $tools_path = "c:\tools\neovim\$module"    
     $zip_file_path = "$archive_path\$module.zip"
     
-    New-Item -Path "c:\" -Name "temp" -ItemType "directory" -Force
+    New-Item -Path "c:\" -Name "nvim_temp" -ItemType "directory" -Force
     Invoke-WebRequest -Uri $nvim_download_link -OutFile $zip_file_path
     Expand-Archive -Path $zip_file_path -DestinationPath $archive_path -Force
     Remove-Item -Path $tools_path -Recurse -Force
     Move-Item -Path "$archive_path\$module" -Destination $tools_path
-    Remove-Item -Path $zip_file_path -Recurse -Force
+    Remove-Item -Path $archive_path -Recurse -Force
     
     c:\tools\neovim\nvim-win64\bin\nvim.exe --version
 }
