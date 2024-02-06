@@ -1,5 +1,5 @@
 # ==================================
-# OG Custom Powerchell Config
+# OG Custom Powershell Config
 # ==================================
 
 # ==== oh-my-posh ==================
@@ -34,7 +34,9 @@ function nvim_cfg { Set-Location $env:USERPROFILE\AppData\Local\nvim }
 function msys ($project) { Set-Location -Path D:\Systems\All\$project }
 function touch ($file) 
 { 
-    "" | Out-File $file -Encoding utf8 
+    if (!(Test-Path $file)) {
+        "" | Out-File $file -Encoding utf8 
+    }
 }
 
 function mc 
