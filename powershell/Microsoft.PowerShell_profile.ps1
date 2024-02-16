@@ -13,8 +13,25 @@ function v
     if ( $selection ) { nvim $selection }
 }
 
+function jf 
+{
+    $paths = "(Get-ChildItem -Path `"d:\repos`", `"d:\systems\all`", `"d:\dev`" -Directory).FullName"
+    $cmd = "$paths | fzf"
+    $selection = Invoke-Expression -Command $cmd
+    if ( $selection ) { 
+        Set-Location $selection
+    }
+}
+
+function vjf 
+{
+    jf
+    v
+}
+
 function pushmta { mjs pushmta }
 function rd ($dir) { cmd.exe /c "rd /s /q $dir" }
+function rf ($pattern) { rg --files | rg "$pattern" -i}
 
 # === Git Alias =====================
 function gs { git status }
@@ -37,20 +54,6 @@ function touch ($file)
     if (!(Test-Path $file)) {
         "" | Out-File $file -Encoding utf8 
     }
-}
-
-function mc 
-{ 
-    Param
-    (
-    [string]$file1,
-    [string]$file2,
-    [string]$file3,
-    [string]$file4
-    )
-    $cmd = "cmd /c compile.bat exe $file1 $file2 $file3 $file4"
-    Write-Host $cmd
-    Invoke-Expression -Command $cmd
 }
 
 # === Install/Update nvim install ===
