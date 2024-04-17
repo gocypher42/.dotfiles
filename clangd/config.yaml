@@ -3,7 +3,6 @@ Diagnostics:
 
 CompileFlags:
   Add:
-    - '-std=c++11'
     # Utils
     - '-ID:\repos\core\util'
     - '-ID:\repos\core\common'
