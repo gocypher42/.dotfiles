@@ -91,3 +91,7 @@ function refreshenv
 {
     $Env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")      
 }
+
+# === Zoxide config ===============
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
+function cd { z }
