@@ -7,9 +7,18 @@
 require("lazy").setup({
   -- NOTE: First, some plugins that don't require any configuration
 
-  -- Git related plugins
-  "tpope/vim-fugitive",
-  "tpope/vim-rhubarb",
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",  -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim", -- optional
+      "ibhagwan/fzf-lua",              -- optional
+    },
+    config = true
+  },
 
   -- Detect tabstop and shiftwidth automatically
   "tpope/vim-sleuth",
@@ -97,11 +106,11 @@ require("lazy").setup({
     priority = 1000,
     config = function()
       require('onedark').setup {
-          style = 'darker',
-          transparent = true,
-          lualine = {
-              transparent = true, -- center bar (c) transparency
-          },
+        style = 'darker',
+        transparent = true,
+        lualine = {
+          transparent = true, -- center bar (c) transparency
+        },
       }
       require('onedark').load()
     end,
@@ -195,9 +204,24 @@ require("lazy").setup({
   },
 
   {
-      "iamcco/markdown-preview.nvim",
-      cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-      ft = { "markdown" },
-      build = function() vim.fn["mkdp#util#install"]() end,
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+
+  {
+    'stevearc/oil.nvim',
+    opts = {
+      columns = { "icon" },
+      keymaps = {
+        ["<C-h>"] = false,
+        ["<M-h>"] = "actions.select_split",
+      },
+      view_options = {
+        show_hidden = true,
+      },
+    },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   }
 }, {})

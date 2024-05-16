@@ -41,3 +41,5 @@ vim.keymap.set("n", "<leader>cc", "<CMD>ccl<CR>", { desc = "Close quickfix list"
 
 -- undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Close quickfix list" })
+
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
