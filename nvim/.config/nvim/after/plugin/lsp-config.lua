@@ -74,7 +74,6 @@ local on_attach = function(_, bufnr)
         "--enable-config",
         "--clang-tidy",
         "--header-insertion=never",
-        "--fallback-style=~/.dotfiles/clang-format/.clang-format",
       },
     },
     -- gopls = {},
