@@ -37,9 +37,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
+local augroup = vim.api.nvim_create_augroup
+local og_group = augroup("og", {})
 
 -- [[ file types ]]
 vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+  group = og_group,
   pattern = { "*.med", "med_*.exp" },
   callback = function()
     vim.opt.filetype = "med"
@@ -48,6 +52,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+  group = og_group,
   pattern = { "mgate.cfg" },
   callback = function()
     vim.opt.filetype = "xml"
@@ -56,9 +61,16 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+  group = og_group,
   pattern = { "*.mxpt" },
   callback = function()
     vim.opt.filetype = "xml"
     vim.opt.syntax = "xml"
   end,
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  group = og_group,
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
 })
