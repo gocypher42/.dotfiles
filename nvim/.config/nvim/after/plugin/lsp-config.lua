@@ -58,6 +58,7 @@ require("which-key").register({
 -- before setting up the servers.
 require("mason").setup()
 require("mason-lspconfig").setup()
+require("og.marcotte")
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -73,7 +74,7 @@ local get_clangd_cmd = function()
     "--enable-config",
     "--clang-tidy",
   }
-  if os.getenv("MARCOTTE_WORKSTATION_TYPE") then
+  if is_marcotte_computer() then
     table.insert(cmd, "--header-insertion=never")
   end
   return cmd

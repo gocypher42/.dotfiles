@@ -1,0 +1,3 @@
+.config/nvim/autoload/plugged/
+.config/nvim/plugin/packer_compiled.lua
+.config/nvim/.luarc.json

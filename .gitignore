@@ -1,5 +1,3 @@
-nvim/.config/nvim/autoload/plugged/
-nvim/.config/nvim/plugin/packer_compiled.lua
 oldprofile.ps1
 fish/.config/fish/fish_variables
 packer_compiled.lua
