@@ -21,6 +21,9 @@ vim.o.breakindent = true
 
 -- Save undo history
 vim.o.undofile = true
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.undodir = vim.fn.expand("~") .. "/.vim/undodir"
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
@@ -48,7 +51,7 @@ vim.o.compatible = false
 vim.o.wrap = false
 vim.o.relativenumber = true
 
- -- NOTE: Add new filetype
+-- NOTE: Add new filetype
 vim.filetype.add({
   extension = {
     CPP = "cpp"
