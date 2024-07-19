@@ -8,7 +8,7 @@ oh-my-posh init pwsh --config "~/.dotfiles/powershell/ohmypush_theme.json" | Inv
 # ==== Custom Alias ================
 function v 
 {
-    $cmd = "rg --files '.' -g '!*.git\*' | fzf"
+    $cmd = "rg --files '.' -g '!*.git\*' -g '!*.gif' -g '!*.ico' -g '!*.d.*' -g '!*.png' | fzf"
     $selection = Invoke-Expression -Command $cmd
     if ( $selection ) { nvim $selection }
 }
@@ -34,10 +34,21 @@ function rd ($dir) { cmd.exe /c "rd /s /q $dir" }
 function rf ($pattern) { rg --files | rg "$pattern" -i}
 
 # === Git Alias =====================
+function lg { lazygit }
+
 function gs { git status }
 function gb { git branch -l -vv }
 function gr { git restore . }
-function lg { lazygit }
+function cb {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string] $WI_number,
+        [Parameter(Mandatory=$false)]
+        [string] $source_branch = "master"
+    )
+
+    git switch -c "users/oggy/WI$WI_number" "$source_branch"
+}
 
 # === CMake Alias ===================
 function cstage { cmake -B build }
