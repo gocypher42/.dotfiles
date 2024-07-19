@@ -4,6 +4,9 @@
 
 -- Set highlight on search
 vim.o.hlsearch = false
+if (vim.loop.os_uname().sysname == "Windows_NT") then
+  vim.g.undotree_DiffCommand = "fc"
+end
 
 -- Make line numbers default
 vim.wo.number = true
