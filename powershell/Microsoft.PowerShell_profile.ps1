@@ -69,7 +69,7 @@ function touch ($file)
 
 # === Install/Update nvim install ===
 function update_nvim {
-    $nvim_download_link = "https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip"
+    $nvim_download_link = "https://github.com/neovim/neovim/releases/download/stable/nvim-win64.zip"
     $module = "nvim-win64"
     $archive_path = "c:\temp"
     $tools_path = "c:\tools\neovim\$module"    
