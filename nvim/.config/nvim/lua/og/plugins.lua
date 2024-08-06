@@ -10,12 +10,12 @@ require("lazy").setup({
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
+      "nvim-lua/plenary.nvim",  -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
 
       -- Only one of these is needed, not both.
       "nvim-telescope/telescope.nvim", -- optional
-      "ibhagwan/fzf-lua",            -- optional
+      "ibhagwan/fzf-lua",              -- optional
     },
     config = true
   },
@@ -112,7 +112,7 @@ require("lazy").setup({
           transparent = true, -- center bar (c) transparency
         },
       }
-      require('onedark').load()
+      -- require('onedark').load()
     end,
   },
 
@@ -121,7 +121,7 @@ require("lazy").setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = "onedark",
+        theme = "tokyonight",
         component_separators = "|",
         section_separators = "",
       },
@@ -223,5 +223,19 @@ require("lazy").setup({
       },
     },
     dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
+    init = function()
+      -- Load the colorscheme here.
+      -- Like many other themes, this one has different styles, and you could load
+      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+      vim.cmd.colorscheme 'tokyonight-storm'
+
+      -- You can configure highlights by doing something like:
+      vim.cmd.hi 'Comment gui=none'
+    end,
   }
 }, {})
