@@ -2,3 +2,4 @@ oldprofile.ps1
 fish/.config/fish/fish_variables
 packer_compiled.lua
 lazy-lock.json
+lazyvim.json
