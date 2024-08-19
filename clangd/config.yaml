@@ -5,6 +5,7 @@ CompileFlags:
   Add:
     # Utils
     - '-ID:\repos\core\util'
+    - '-ID:\repos\core\util\src'
     - '-ID:\repos\core\common'
     # mtsx
     - '-ID:\repos\mtsx\MTSX'
