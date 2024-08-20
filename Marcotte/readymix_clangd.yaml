@@ -25,7 +25,4 @@ CompileFlags:
     - '-ID:\repos\ReadyMix\beton\src\beton.server'
     - '-ID:\repos\ReadyMix\beton\src\beton.server\WebServices'
     - '-ID:\repos\ReadyMix\beton\src\sprvisor'
-    # Tools
-    - '-ID:\repos\tools\msuivi\src'
-    - '-ID:\repos\tools\mta\src'
 

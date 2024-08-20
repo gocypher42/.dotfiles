@@ -80,7 +80,7 @@ require("og.marcotte")
 local get_clangd_cmd = function()
   local cmd = {
     "clangd",
-    "--enable-config",
+    -- "--enable-config",
     "--clang-tidy",
   }
   if is_marcotte_computer() then
