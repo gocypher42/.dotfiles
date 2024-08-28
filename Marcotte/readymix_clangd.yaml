@@ -18,6 +18,7 @@ CompileFlags:
     - '-ID:\repos\process\genx2\genxlib'
     # ReadyMix
     - '-ID:\repos\ReadyMix\beton\src'
+    - '-ID:\repos\ReadyMix\beton\src\beton.apikey'
     - '-ID:\repos\ReadyMix\beton\src\beton.client'
     - '-ID:\repos\ReadyMix\beton\src\beton.common'
     - '-ID:\repos\ReadyMix\beton\src\beton.common\taxes'

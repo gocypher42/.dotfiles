@@ -8,7 +8,7 @@ require("telescope").setup({
         ["<C-d>"] = false,
       },
     },
-    file_ignore_patterns = { "^.git/" }
+    file_ignore_patterns = { "^.git/", "^obj/"  }
   },
   pickers = {
     lsp_document_symbols = {

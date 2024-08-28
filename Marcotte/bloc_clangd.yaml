@@ -1,0 +1,22 @@
+Diagnostics:
+  UnusedIncludes: Strict
+
+CompileFlags:
+  Add:
+    # Std
+    - '-std=c++20'
+    # Utils
+    - '-ID:\repos\core\util'
+    - '-ID:\repos\core\util\src'
+    - '-ID:\repos\core\util\src\mweb'
+    - '-ID:\repos\core\common'
+    - '-ID:\repos\core\eutil'
+    # mtsx
+    - '-ID:\repos\mtsx\MTSX'
+    # mppd
+    - '-ID:\repos\mppd\mppd3'
+    # Process
+    - '-ID:\repos\process\genx2\include'
+    - '-ID:\repos\process\genx2\genxlib'
+    # Bloc
+    - '-ID:\repos\bloc\bblocs\src'

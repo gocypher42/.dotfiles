@@ -3,7 +3,7 @@
 # ==================================
 
 # ==== oh-my-posh ==================
-oh-my-posh init pwsh --config "~/.dotfiles/powershell/ohmypush_theme.json" | Invoke-Expression
+oh-my-posh init pwsh --config "~/.dotfiles/powershell/ohmypush_config.json" | Invoke-Expression
 
 # ==== Custom Alias ================
 function v 
