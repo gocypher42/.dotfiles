@@ -70,10 +70,8 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 })
 
 require("og.marcotte")
-if not is_marcotte_computer() then
-  vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    group = og_group,
-    pattern = { "*" },
-    command = [[%s/\s\+$//e]],
-  })
-end
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  group = og_group,
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})
