@@ -6,11 +6,14 @@
 oh-my-posh init pwsh --config "~/.dotfiles/powershell/ohmypush_config.json" | Invoke-Expression
 
 # ==== Custom Alias ================
-function v 
+function v
 {
     $cmd = "rg --files '.' -g '!*.git\*' -g '!*.gif' -g '!*.ico' -g '!*.d.*' -g '!*.png' | fzf"
     $selection = Invoke-Expression -Command $cmd
-    if ( $selection ) { nvim $selection }
+    if ( $selection )
+    {
+        nvim $selection
+    }
 }
 
 function jf 
@@ -67,19 +70,37 @@ function touch ($file)
     }
 }
 
+function start-cds
+{
+    $frontend = "frontend"
+    $backend = "backend"
+
+    $current_app = Split-Path -Path (Get-Location) -Leaf
+
+    $frontend_pane_title = "$current_app :: $frontend"
+    $frontend_path = "./$frontend"
+    $frontend_cmd = "npm i --legacy-peer-deps && npm start && pause"
+
+    $backend_pane_title = "$current_app :: $backend"
+    $backend_path = "./$backend"
+    $backend_cmd = "npm i && npm run develop-watch && pause"
+
+    wt --title $frontend_pane_title --suppressApplicationTitle -d $frontend_path cmd /c $frontend_cmd `; sp --title $backend_pane_title --suppressApplicationTitle -d $backend_path cmd /c $backend_cmd
+}
+
 # === Install/Update nvim install ===
-function update_nvim {
-    $nvim_download_link = "https://github.com/neovim/neovim/releases/download/stable/nvim-win64.zip"
+function update_nvim
+{
     $module = "nvim-win64"
-    $archive_path = "c:\temp"
-    $tools_path = "c:\tools\neovim\$module"    
-    $zip_file_path = "$archive_path\$module.zip"
-    
-    New-Item -Path "c:\" -Name "temp" -ItemType "directory" -Force
+    $archive = "$module.zip"
+    $nvim_download_link = "https://github.com/neovim/neovim/releases/download/stable/$archive"
+    $tools_path = "c:\tools\neovim\$module"
+    $zip_file_path = "$Env:Temp\$archive"
+
     Invoke-WebRequest -Uri $nvim_download_link -OutFile $zip_file_path
-    Expand-Archive -Path $zip_file_path -DestinationPath $archive_path -Force
+    Expand-Archive -Path $zip_file_path -DestinationPath $ENV:Temp -Force
     Remove-Item -Path $tools_path -Recurse -Force
-    Move-Item -Path "$archive_path\$module" -Destination $tools_path
+    Move-Item -Path "$Env:Temp\$module" -Destination $tools_path
     Remove-Item -Path $zip_file_path -Recurse -Force
 
     Invoke-Expression -Command "c:\tools\neovim\nvim-win64\bin\nvim.exe --version"
