@@ -49,6 +49,7 @@ if (Get-Command zoxide -ErrorAction SilentlyContinue) {
 Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
 Set-Alias -Name zi -Value __zoxide_zi -Option AllScope -Scope Global -Force
 
+# ==== Custom Alias ================
 function v
 {
     $cmd = "rg --files '.' -g '!*.git\*' -g '!*.gif' -g '!*.ico' -g '!*.d.*' -g '!*.png' | fzf"
@@ -62,6 +63,24 @@ function v
 function lg { lazygit }
 function gs { git status }
 function gb { git branch -l -vv }
+
+function start-cds
+{
+    $frontend = "frontend"
+    $backend = "backend"
+
+    $current_app = Split-Path -Path (Get-Location) -Leaf
+
+    $frontend_pane_title = "$current_app :: $frontend"
+    $frontend_path = "./$frontend"
+    $frontend_cmd = "npm i --legacy-peer-deps && npm start && pause"
+
+    $backend_pane_title = "$current_app :: $backend"
+    $backend_path = "./$backend"
+    $backend_cmd = "npm i && npm run develop-watch && pause"
+
+    wt --title $frontend_pane_title --suppressApplicationTitle -d $frontend_path cmd /c $frontend_cmd `; sp --title $backend_pane_title --suppressApplicationTitle -d $backend_path cmd /c $backend_cmd
+}
 
 # === Install/Update nvim install ===
 function update_nvim
