@@ -235,19 +235,19 @@ require("lazy").setup({
     ft = { "markdown" },
   },
 
-  {
-    'stevearc/oil.nvim',
-    opts = {
-      columns = { "icon" },
-      keymaps = {
-        ["<C-h>"] = false,
-        ["<M-h>"] = "actions.select_split",
-      },
-      view_options = {
-        show_hidden = true,
-      },
-    },
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-  }
+  -- {
+  --   'stevearc/oil.nvim',
+  --   opts = {
+  --     columns = { "icon" },
+  --     keymaps = {
+  --       ["<C-h>"] = false,
+  --       ["<M-h>"] = "actions.select_split",
+  --     },
+  --     view_options = {
+  --       show_hidden = true,
+  --     },
+  --   },
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  -- }
 
 }, {})
