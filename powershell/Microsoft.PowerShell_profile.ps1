@@ -23,7 +23,7 @@ function Test-CommandExists {
 
 function touch($file) { "" | Out-File $file -Encoding ASCII }
 
-# System Utilitie
+# System Utilities
 function admin {
     if ($args.Count -gt 0) {
         $argList = $args -join ' '
@@ -33,23 +33,7 @@ function admin {
     }
 }
 
-if (Get-Command zoxide -ErrorAction SilentlyContinue) {
-    Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
-} else {
-    Write-Host "zoxide command not found. Attempting to install via winget..."
-    try {
-        winget install -e --id ajeetdsouza.zoxide
-        Write-Host "zoxide installed successfully. Initializing..."
-        Invoke-Expression (& { (zoxide init powershell | Out-String) })
-    } catch {
-        Write-Error "Failed to install zoxide. Error: $_"
-    }
-}
 
-Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
-Set-Alias -Name zi -Value __zoxide_zi -Option AllScope -Scope Global -Force
-
-# ==== Custom Alias ================
 function v
 {
     $cmd = "rg --files '.' -g '!*.git\*' -g '!*.gif' -g '!*.ico' -g '!*.d.*' -g '!*.png' | fzf"
@@ -62,25 +46,9 @@ function v
 
 function lg { lazygit }
 function gs { git status }
-function gb { git branch -l -vv }
+function gb { git branch -l k-vv }
 
-function start-cds
-{
-    $frontend = "frontend"
-    $backend = "backend"
-
-    $current_app = Split-Path -Path (Get-Location) -Leaf
-
-    $frontend_pane_title = "$current_app :: $frontend"
-    $frontend_path = "./$frontend"
-    $frontend_cmd = "npm i --legacy-peer-deps && npm start && pause"
-
-    $backend_pane_title = "$current_app :: $backend"
-    $backend_path = "./$backend"
-    $backend_cmd = "npm i && npm run develop-watch && pause"
-
-    wt --title $frontend_pane_title --suppressApplicationTitle -d $frontend_path cmd /c $frontend_cmd `; sp --title $backend_pane_title --suppressApplicationTitle -d $backend_path cmd /c $backend_cmd
-}
+function spot { spotify_player }
 
 # === Install/Update nvim install ===
 function update_nvim
@@ -105,4 +73,84 @@ function refreshenv
     $Env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
 }
 
+# === Command Alkon Specific Functions ===
+function start-cds
+{
+    param(
+        [string]$FrontendDir = "frontend",
+        [string]$BackendDir  = "backend",
+        [switch]$NoPause
+    )
+
+    $current_app = Split-Path -Path (Get-Location) -Leaf
+
+    function Get-PaneSpec{
+        param(
+            [string]$Role,
+            [string]$Path,
+            [string]$InstallCmd,
+            [string]$RunCmd
+        )
+
+        $full_path = Join-Path -Path (Get-Location) -ChildPath $Path
+        $title = "$current_app :: $Role"
+
+        if (Test-Path -Path $full_path) {
+            $cmd = "$InstallCmd && $RunCmd"
+        } else{
+            $cmd = "echo ==^> no $Path directory found."
+            $full_path = (Get-Location)
+        }
+
+        if (-not $NoPause) {
+            $cmd += " && pause"
+        }
+
+        return @{
+            Title = $title
+            Path = $full_path
+            Cmd = $cmd
+        }
+    }
+
+    $frontendspec = Get-PaneSpec -Role "frontend" -Path $FrontendDir `
+        -InstallCmd "npm i --legacy-peer-deps" `
+        -RunCmd "npm start"
+
+    $backendSpec = Get-PaneSpec -Role "backend" -Path $BackendDir `
+        -InstallCmd "npm i" `
+        -RunCmd "npm run develop-watch"
+
+    wt --title $frontendSpec.Title --suppressApplicationTitle -d $frontendSpec.Path cmd /c $frontendSpec.Cmd `
+        `; sp --title $backendSpec.Title --suppressApplicationTitle -d $backendSpec.Path cmd /c $backendSpec.Cmd
+}
+
+# === Package installation ===
+$packages = @(
+    @{ Name = "zoxide"; WingetPackage = "ajeetdsouza.zoxide" },
+    @{ Name = "oh-my-posh"; WingetPackage = "JanDeDobbeleer.OhMyPosh" }
+)
+
+foreach ($pkg in $packages) {
+    if (-Not (Get-Command $pkg.Name -ErrorAction SilentlyContinue)) {
+        Write-Host "$($pkg.Name) command not found. Attempting to install via winget..."
+        try {
+            winget install -e --id $pkg.WingetPackage
+        } catch {
+            Write-Error "Failed to install $($pkg.Name). Error: $_"
+        }
+    }
+}
+
+# === Oh-My-Posh ===
 oh-my-posh init pwsh --config "~/.dotfiles/powershell/ohmyposh_config.json" | Invoke-Expression
+
+# === Zoxide ===
+if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+    Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
+    Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
+    Set-Alias -Name zi -Value __zoxide_zi -Option AllScope -Scope Global -Force
+} else {
+    Write-Error "Can't find zoxide."
+}
+
