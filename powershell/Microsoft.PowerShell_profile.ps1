@@ -142,6 +142,9 @@ foreach ($pkg in $packages) {
     }
 }
 
+# === Jujutsu VCS ===
+Invoke-Expression (& { (jj util completion power-shell | Out-String) })
+
 # === Oh-My-Posh ===
 oh-my-posh init pwsh --config "~/.dotfiles/powershell/ohmyposh_config.json" | Invoke-Expression
 
