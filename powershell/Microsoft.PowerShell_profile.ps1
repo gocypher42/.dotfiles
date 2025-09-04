@@ -128,6 +128,21 @@ function start-cds
         `; sp --title $backendSpec.Title --suppressApplicationTitle -d $backendSpec.Path cmd /c $backendSpec.Cmd
 }
 
+function pull-all-cds {
+    foreach ($dir in (Get-ChildItem -Directory).Name) {
+        $fullPath = (Resolve-Path -Path $dir).Path
+        Write-Output "==> $fullPath"
+        Set-Location -Path $fullPath
+        if (Test-Path -Path ".jj") {
+            jj git fetch
+        } elseif (Test-Path -Path ".git") {
+            git pull
+        }
+        Write-Output "----"
+        cd -
+    }
+}
+
 # === Package installation ===
 $packages = @(
     @{ Name = "zoxide"; WingetPackage = "ajeetdsouza.zoxide" },
