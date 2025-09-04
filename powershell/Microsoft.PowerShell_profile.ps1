@@ -36,7 +36,7 @@ function admin {
 
 function v
 {
-    $cmd = "rg --files '.' -g '!*.git\*' -g '!*.gif' -g '!*.ico' -g '!*.d.*' -g '!*.png' | fzf"
+    $cmd = "rg --files '.' -g '!node_modules' -g '!*.gif' -g '!*.ico' -g '!*.d.*' -g '!*.png' | fzf"
     $selection = Invoke-Expression -Command $cmd
     if ( $selection )
     {
@@ -77,10 +77,13 @@ function refreshenv
 function start-cds
 {
     param(
+        [string]$AppPath = (Get-Location),
         [string]$FrontendDir = "frontend",
         [string]$BackendDir  = "backend",
         [switch]$NoPause
     )
+
+    $AppPath = (Resolve-Path -Path $AppPath).Path
 
     $current_app = Split-Path -Path (Get-Location) -Leaf
 
@@ -92,14 +95,14 @@ function start-cds
             [string]$RunCmd
         )
 
-        $full_path = Join-Path -Path (Get-Location) -ChildPath $Path
+        $full_path = Join-Path -Path $AppPath -ChildPath $Path
         $title = "$current_app :: $Role"
 
         if (Test-Path -Path $full_path) {
             $cmd = "$InstallCmd && $RunCmd"
         } else{
             $cmd = "echo ==^> no $Path directory found."
-            $full_path = (Get-Location)
+            $full_path = $AppPath
         }
 
         if (-not $NoPause) {
