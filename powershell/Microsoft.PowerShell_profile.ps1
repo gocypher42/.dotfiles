@@ -84,8 +84,7 @@ function start-cds
     )
 
     $AppPath = (Resolve-Path -Path $AppPath).Path
-
-    $current_app = Split-Path -Path (Get-Location) -Leaf
+    $current_app = Split-Path -Path $AppPath -Leaf
 
     function Get-PaneSpec{
         param(
@@ -137,6 +136,21 @@ function pull-all-cds {
             jj git fetch
         } elseif (Test-Path -Path ".git") {
             git pull
+        }
+        Write-Output "----"
+        cd -
+    }
+}
+
+function show-all-status-cds {
+    foreach ($dir in (Get-ChildItem -Directory).Name) {
+        $fullPath = (Resolve-Path -Path $dir).Path
+        Write-Output "==> $fullPath"
+        Set-Location -Path $fullPath
+        if (Test-Path -Path ".jj") {
+            jj log -n 10
+        } elseif (Test-Path -Path ".git") {
+            git log -n 10 --graph --all
         }
         Write-Output "----"
         cd -
