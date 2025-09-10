@@ -174,7 +174,7 @@ foreach ($pkg in $packages) {
     }
 }
 
-# === Jujutsu VCS ===
+# === Jujutsu VCS Completion ===
 Invoke-Expression (& { (jj util completion power-shell | Out-String) })
 
 # === Oh-My-Posh ===
