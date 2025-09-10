@@ -25,6 +25,22 @@ ls.add_snippets("cpp", {
   ),
 })
 
+ls.add_snippets("javascript", {
+  ls.s(
+    {
+      trig = "oglog",
+      name = "Logging snip",
+      desc = "Logging snip",
+    },
+    fmt(
+      [[console.log("=== [OG] ===> {}")]],
+      {
+        ls.i(0),
+      }
+    )
+  ),
+})
+
 ls.add_snippets("python", {
   ls.s(
     {
