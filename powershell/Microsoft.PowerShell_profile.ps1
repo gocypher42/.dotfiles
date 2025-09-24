@@ -83,6 +83,10 @@ function start-cds
         [switch]$NoPause
     )
 
+    if (-Not (Test-Path -Path $AppPath)) {
+        Write-Output "Can't local $AppPath. Please try again..."
+    }
+
     $AppPath = (Resolve-Path -Path $AppPath).Path
     $current_app = Split-Path -Path $AppPath -Leaf
 
@@ -148,9 +152,9 @@ function show-all-status-cds {
         Write-Output "==> $fullPath"
         Set-Location -Path $fullPath
         if (Test-Path -Path ".jj") {
-            jj log -n 10
+            jj
         } elseif (Test-Path -Path ".git") {
-            git log -n 10 --graph --all
+            git status
         }
         Write-Output "----"
         cd -
