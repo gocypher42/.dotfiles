@@ -85,6 +85,7 @@ function start-cds
 
     if (-Not (Test-Path -Path $AppPath)) {
         Write-Output "Can't local $AppPath. Please try again..."
+        return;
     }
 
     $AppPath = (Resolve-Path -Path $AppPath).Path
@@ -137,7 +138,7 @@ function pull-all-cds {
         Write-Output "==> $fullPath"
         Set-Location -Path $fullPath
         if (Test-Path -Path ".jj") {
-            jj git fetch
+            jj git fetch && jj rebase -d develop@origin
         } elseif (Test-Path -Path ".git") {
             git pull
         }
