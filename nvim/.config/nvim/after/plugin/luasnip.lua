@@ -2,6 +2,9 @@ local ls = require("luasnip")
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 
+-- ==========
+-- C++
+-- ==========
 ls.add_snippets("cpp", {
   ls.s(
     {
@@ -24,7 +27,11 @@ ls.add_snippets("cpp", {
     )
   ),
 })
+-- ==========
 
+-- ==========
+-- Javascript
+-- ==========
 ls.add_snippets("javascript", {
   ls.s(
     {
@@ -40,7 +47,11 @@ ls.add_snippets("javascript", {
     )
   ),
 })
+-- ==========
 
+-- ==========
+-- Python
+-- ==========
 ls.add_snippets("python", {
   ls.s(
     {
@@ -63,7 +74,11 @@ ls.add_snippets("python", {
     )
   ),
 })
+-- ==========
 
+-- ==========
+-- CMake
+-- ==========
 ls.add_snippets("cmake", {
   ls.s(
     {
@@ -106,3 +121,34 @@ ls.add_snippets("cmake", {
     )
   ),
 })
+-- ==========
+
+-- ==========
+-- Rust
+-- ==========
+ls.add_snippets("rust", {
+  ls.s(
+    {
+      trig = "testmod",
+      name = "Test module for Rust",
+      desc = "Creates a template Test module",
+    },
+    fmt(
+      [[
+      #[cfg(test)]
+      mod tests {{
+          use super::*;
+
+          #[test]
+          fn test1() {{
+              {}
+          }}
+      }}
+      ]],
+      {
+        ls.i(0, 'assert!(true);'),
+      }
+    )
+  ),
+})
+-- ==========
