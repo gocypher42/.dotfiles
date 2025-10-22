@@ -21,7 +21,9 @@ v() {
 }
 
 # === For Rust applications ===
-. "$HOME/.cargo/env"
+if [ -d "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi
 
 # === Zoxide ===
 eval "$(zoxide init bash)"
