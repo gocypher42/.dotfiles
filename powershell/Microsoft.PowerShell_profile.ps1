@@ -166,6 +166,7 @@ function show-all-status-cds {
 $packages = @(
     @{ Name = "zoxide"; WingetPackage = "ajeetdsouza.zoxide" },
     @{ Name = "oh-my-posh"; WingetPackage = "JanDeDobbeleer.OhMyPosh" }
+    @{ Name = "fzf"; WingetPackage = "junegunn.fzf" }
 )
 
 foreach ($pkg in $packages) {
