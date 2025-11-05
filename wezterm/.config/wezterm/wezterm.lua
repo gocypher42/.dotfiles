@@ -4,9 +4,10 @@ local config = wezterm.config_builder()
 config.window_close_confirmation = 'NeverPrompt'
 
 -- font settings
-config.font_size = 12
+config.font_size = 13
 config.line_height = 1.2
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+-- wezterm.font("JetBrainsMono Nerd Font")
+config.font = wezterm.font ('FiraMono Nerd Font')
 
 -- Cursor
 config.colors = {
@@ -26,7 +27,6 @@ config.inactive_pane_hsb = {
   saturation = 0.8,
   brightness = 0.6,
 }
-config.color_scheme = "Catpuccin Mocha"
 
 -- Miscellaneous settings
 config.max_fps = 120

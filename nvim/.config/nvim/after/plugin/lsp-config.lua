@@ -78,19 +78,7 @@ require("og.marcotte")
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  clangd = {
-    cmd = function()
-      local cmd = {
-        "clangd",
-        "--clang-tidy",
-      }
-      if is_marcotte_computer() then
-        table.insert(cmd, "--header-insertion=never")
-      end
-      return cmd
-    end
-
-  },
+  clangd = {},
   pyright = {},
   rust_analyzer = {},
   ts_ls = {},
