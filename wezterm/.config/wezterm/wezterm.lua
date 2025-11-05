@@ -38,8 +38,8 @@ config.keys = {
   { key = "w", mods = "LEADER", action = wezterm.action.CloseCurrentPane({ confirm = false }) },
 
   -- splits
-  { key = "=", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-  { key = "_", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+  { key = "v", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+  { key = "s", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
   -- moving between panes
   { key = "LeftArrow", mods = "ALT", action = act.ActivatePaneDirection("Left") },
