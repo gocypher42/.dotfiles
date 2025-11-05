@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 local config = wezterm.config_builder()
+config.window_close_confirmation = 'NeverPrompt'
 
 -- font settings
 config.font_size = 12
@@ -38,7 +39,7 @@ config.keys = {
 
   -- splits
   { key = "=", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-  { key = "-", mods = "ALT|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+  { key = "_", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
   -- moving between panes
   { key = "LeftArrow", mods = "ALT", action = act.ActivatePaneDirection("Left") },
