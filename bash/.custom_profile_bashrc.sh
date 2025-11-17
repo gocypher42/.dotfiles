@@ -5,6 +5,8 @@
 # ```
 #
 
+PATH=$PATH:~/.local/bin
+
 alias ls='eza -lah --group-directories-first --color=auto --icons=auto'
 
 v() {
