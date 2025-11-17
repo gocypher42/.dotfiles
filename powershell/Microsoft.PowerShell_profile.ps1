@@ -44,6 +44,7 @@ function v
     }
 }
 
+Set-Alias -Name puv -Value 'C:\Users\olivier.guenette\.local\bin\uv'
 function lg { lazygit }
 function gs { git status }
 function gb { git branch -l k-vv }

@@ -91,6 +91,7 @@ local servers = {
     },
   },
   csharp_ls = {},
+  -- powershell_es = {},
 }
 
 require("clangd_extensions").setup()
