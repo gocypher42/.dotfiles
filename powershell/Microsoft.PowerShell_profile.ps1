@@ -9,12 +9,10 @@ if (-not (Get-Module -ListAvailable -Name Terminal-Icons)) {
     Install-Module -Name Terminal-Icons -Scope CurrentUser -Force -SkipPublisherCheck
 }
 Import-Module -Name Terminal-Icons
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-    Import-Module "$ChocolateyProfile"
-}
 
-# Utility Functions
+# ============================
+# --   Utility Functions    --
+# ============================
 function Test-CommandExists {
     param($command)
     $exists = $null -ne (Get-Command $command -ErrorAction SilentlyContinue)
@@ -23,7 +21,14 @@ function Test-CommandExists {
 
 function touch($file) { "" | Out-File $file -Encoding ASCII }
 
-# System Utilities
+function refreshenv
+{
+    $Env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
+}
+
+# ============================
+# --    System Utilities    --
+# ============================
 function admin {
     if ($args.Count -gt 0) {
         $argList = $args -join ' '
@@ -32,7 +37,6 @@ function admin {
         Start-Process wt -Verb runAs
     }
 }
-
 
 function v
 {
@@ -51,7 +55,9 @@ function gb { git branch -l k-vv }
 
 function spot { spotify_player }
 
-# === Install/Update nvim install ===
+# =================================
+# -- Install/Update nvim install --
+# =================================
 function update_nvim
 {
     $module = "nvim-win64"
@@ -69,12 +75,9 @@ function update_nvim
     Invoke-Expression -Command "c:\tools\neovim\nvim-win64\bin\nvim.exe --version"
 }
 
-function refreshenv
-{
-    $Env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
-}
-
-# === Command Alkon Specific Functions ===
+# ======================================
+# -- Command Alkon Specific Functions --
+# ======================================
 function start-cds
 {
     param(
@@ -163,11 +166,17 @@ function show-all-status-cds {
     }
 }
 
-# === Package installation ===
+# ============================
+# --  Package installation  --
+# ============================
 $packages = @(
     @{ Name = "zoxide"; WingetPackage = "ajeetdsouza.zoxide" },
     @{ Name = "oh-my-posh"; WingetPackage = "JanDeDobbeleer.OhMyPosh" }
     @{ Name = "fzf"; WingetPackage = "junegunn.fzf" }
+    @{ Name = "yazi"; WingetPackage = "sxyazi.yazi" }
+    @{ Name = "nvim"; WingetPackage = "Neovim.Neovim" }
+    @{ Name = "git"; WingetPackage = "Git.Git" }
+    @{ Name = "jj"; WingetPackage = "jj-vcs.jj" }
 )
 
 foreach ($pkg in $packages) {
@@ -181,13 +190,32 @@ foreach ($pkg in $packages) {
     }
 }
 
-# === Jujutsu VCS Completion ===
+# ============================
+# --          yazi          --
+# ============================
+function y {
+    $tmp = (New-TemporaryFile).FullName
+    yazi $args --cwd-file="$tmp"
+    $cwd = Get-Content -Path $tmp -Encoding UTF8
+    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
+        Set-Location -LiteralPath (Resolve-Path -LiteralPath $cwd).Path
+    }
+    Remove-Item -Path $tmp
+}
+
+# ============================
+# -- Jujutsu VCS Completion --
+# ============================
 Invoke-Expression (& { (jj util completion power-shell | Out-String) })
 
-# === Oh-My-Posh ===
+# ============================
+# --       Oh-My-Posh       --
+# ============================
 oh-my-posh init pwsh --config "~/.dotfiles/powershell/ohmyposh_config.json" | Invoke-Expression
 
-# === Zoxide ===
+# ============================
+# --         Zoxide         --
+# ============================
 if (Get-Command zoxide -ErrorAction SilentlyContinue) {
     Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
     Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
