@@ -52,7 +52,7 @@ vim.o.cursorline = true
 vim.o.scrolloff = 8
 vim.o.compatible = false
 vim.o.wrap = false
-vim.o.relativenumber = true
+vim.o.relativenumber = false
 
 -- NOTE: Add new filetype
 vim.filetype.add({
