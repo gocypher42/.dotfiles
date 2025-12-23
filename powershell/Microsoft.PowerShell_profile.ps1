@@ -25,29 +25,11 @@ foreach ($file in $files) {
 # ============================
 # --   Utility Functions    --
 # ============================
-function Test-CommandExists {
-    param($command)
-    $exists = $null -ne (Get-Command $command -ErrorAction SilentlyContinue)
-    return $exists
-}
-
 function touch($file) { "" | Out-File $file -Encoding ASCII }
 
 function refreshenv
 {
     $Env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
-}
-
-# ============================
-# --    System Utilities    --
-# ============================
-function admin {
-    if ($args.Count -gt 0) {
-        $argList = $args -join ' '
-        Start-Process wt -Verb runAs -ArgumentList "pwsh.exe -NoExit -Command $argList"
-    } else {
-        Start-Process wt -Verb runAs
-    }
 }
 
 function v
@@ -60,32 +42,49 @@ function v
     }
 }
 
-Set-Alias -Name puv -Value 'C:\Users\olivier.guenette\.local\bin\uv'
+Set-Alias -Name puv -Value 'C:\Users\OGuenette\AppData\Local\Microsoft\WinGet\Links\uv.exe'
 function lg { lazygit }
 function gs { git status }
-function gb { git branch -l k-vv }
+function gb { git branch -l -vv }
 
-function spot { spotify_player }
+function Enter-MSVC {
+    $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
 
-# =================================
-# -- Install/Update nvim install --
-# =================================
-function update_nvim
-{
-    $module = "nvim-win64"
-    $archive = "$module.zip"
-    $nvim_download_link = "https://github.com/neovim/neovim/releases/download/stable/$archive"
-    $tools_path = "c:\tools\neovim\$module"
-    $zip_file_path = "$Env:Temp\$archive"
+    if (-not (Test-Path $vswhere)) {
+        Write-Error "vswhere.exe not found. Is Visual Studio or Build Tools installed?"
+        return
+    }
 
-    Invoke-WebRequest -Uri $nvim_download_link -OutFile $zip_file_path
-    Expand-Archive -Path $zip_file_path -DestinationPath $ENV:Temp -Force
-    Remove-Item -Path $tools_path -Recurse -Force
-    Move-Item -Path "$Env:Temp\$module" -Destination $tools_path
-    Remove-Item -Path $zip_file_path -Recurse -Force
+    $vsInstallPath = & $vswhere `
+        -latest `
+        -products * `
+        -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
+        -property installationPath
 
-    Invoke-Expression -Command "c:\tools\neovim\nvim-win64\bin\nvim.exe --version"
+    if (-not $vsInstallPath) {
+        Write-Error "No Visual Studio installation with C++ tools found."
+        return
+    }
+
+    $vcvars = Join-Path $vsInstallPath "VC\Auxiliary\Build\vcvarsall.bat"
+
+    if (-not (Test-Path $vcvars)) {
+        Write-Error "vcvarsall.bat not found at $vcvars"
+        return
+    }
+
+    cmd /c "`"$vcvars`" x64 && set" |
+        ForEach-Object {
+            if ($_ -match '^(.*?)=(.*)$') {
+                Set-Item -Path Env:$($matches[1]) -Value $matches[2]
+            }
+        }
+
+    Write-Host "MSVC environment loaded from:" -ForegroundColor Green
+    Write-Host "  $vsInstallPath"
 }
+
+Enter-MSVC
 
 # ============================
 # --          yazi          --
@@ -113,6 +112,7 @@ oh-my-posh init pwsh --config "~/.dotfiles/powershell/ohmyposh_config.json" | In
 # ============================
 # --         Zoxide         --
 # ============================
+# --- !!! Must be last section
 if (Get-Command zoxide -ErrorAction SilentlyContinue) {
     Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
     Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
