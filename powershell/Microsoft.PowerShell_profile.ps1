@@ -84,8 +84,6 @@ function Enter-MSVC {
     Write-Host "  $vsInstallPath"
 }
 
-Enter-MSVC
-
 # ============================
 # --          yazi          --
 # ============================
